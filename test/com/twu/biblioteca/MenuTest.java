@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import org.apache.commons.lang.RandomStringUtils;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -35,7 +37,7 @@ public class MenuTest {
 
     @Test
     public void AddOptionToTheMenu() {
-        String optionTest = "Option Test";
+        String optionTest = RandomStringUtils.randomAlphanumeric(2);
         int positionTest =0;
         menu.addOption(optionTest,positionTest);
         assertEquals(optionTest,menu.getOption(positionTest));
