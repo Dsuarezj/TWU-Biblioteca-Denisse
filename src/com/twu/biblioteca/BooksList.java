@@ -38,28 +38,4 @@ public class BooksList {
     }
 
 
-
-
-
-
-
-   /* public void displayBooksName() {
-        startBookNameList();
-        int numberOfBooks = bookName.getBookNameList().size();
-        for (int i = 0; i < numberOfBooks; i++) {
-        System.out.println(bookName.getBookNameList().get(i));
-        }
-    }
-
-    public void displayBookListComplete (){
-        startBookNameList();
-        int numberOfBooks = bookName.getBookNameList().size();
-        for (int i = 1; i <= numberOfBooks; i++) {
-            System.out.print(i + "\t");
-            System.out.print(bookName.getBookNameList().get(i) + "\t");
-            System.out.print(bookName.getBookAuthorList().get(i) + "\t");
-            System.out.print(bookName.getBookYearList().get(i) + "\t");
-            System.out.println();
-        }
-    }*/
 }
