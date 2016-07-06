@@ -29,7 +29,6 @@ public class BooksListTest {
 
     }
 
-
     @Test
     public void DisplayWelcomeText() {
         allBookList.startBookNameList();
@@ -52,14 +51,7 @@ public class BooksListTest {
         assertEquals(testBookList,allBookList.getABooksAvailable());
     }
 
-    /* @Test
-    public void verifySizeOfNameAndAuthorArray (){
-        assertEquals(bookList.getBookNameList().size(),bookList.getBookAuthorList().size());
-    }
 
-    @Test
-    public void verifySizeOfNameAndYearArray (){
-        assertEquals(bookList.getBookNameList().size(), bookList.getBookYearList().size());
-    }*/
+
 
 }
