@@ -7,8 +7,7 @@ public class Menu {
 
         private int userInput;
         private int numberOfMenuItems;
-        private String [] menuItems = new String[numberOfMenuItems];
-        ArrayList listOfBookToIngress = new ArrayList();
+        ArrayList<String> menuItems = new ArrayList<String>();
 
 
     void displayWelcome(){
@@ -16,12 +15,11 @@ public class Menu {
         System.out.println(welcomeMessage);
     }
 
-
-    public void addOption(String optionTest, int positionTest) {
-
+    public void addOption(String option) {
+        menuItems.add(option);
     }
 
-    public String getOption(int positionTest) {
-    return "Option Test";
+    public String getOption(int itemPosition) {
+    return menuItems.get(itemPosition);
     }
 }

@@ -38,9 +38,8 @@ public class MenuTest {
     @Test
     public void AddOptionToTheMenu() {
         String optionTest = RandomStringUtils.randomAlphanumeric(2);
-        int positionTest =0;
-        menu.addOption(optionTest,positionTest);
-        assertEquals(optionTest,menu.getOption(positionTest));
+        menu.addOption(optionTest);
+        assertEquals(optionTest,menu.getOption(0));
     }
 
 }
