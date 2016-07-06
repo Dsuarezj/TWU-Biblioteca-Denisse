@@ -24,11 +24,34 @@ public class BooksListTest {
 
 
     @Test
-    public void displayFirstNameBooksTest() {
+    public void DisplayWelcomeText() {
         allBookList.startBookNameList();
         assertEquals("The books aviable are:\n", byteArrayOutputStream.toString());
     }
 
+    @Test
+    public void GetBookInformation() {
+        String bookName = "Book name test";
+        String bookAuthor = "Book author Test";
+        int bookYear = 1990;
 
+        Book book = new Book(bookName, bookAuthor, bookYear);
+
+        assertEquals(bookName, book.getBookName());
+        assertEquals(bookAuthor, book.getBookAuthor());
+        assertEquals(bookYear, book.getBookYear());
+    }
+
+
+    
+    /* @Test
+    public void verifySizeOfNameAndAuthorArray (){
+        assertEquals(bookList.getBookNameList().size(),bookList.getBookAuthorList().size());
+    }
+
+    @Test
+    public void verifySizeOfNameAndYearArray (){
+        assertEquals(bookList.getBookNameList().size(), bookList.getBookYearList().size());
+    }*/
 
 }

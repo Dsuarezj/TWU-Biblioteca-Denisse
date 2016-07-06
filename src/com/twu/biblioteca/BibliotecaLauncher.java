@@ -4,10 +4,9 @@ public class BibliotecaLauncher {
 
     public static void main(String[] args) {
         Menu menu = new Menu();
-        BooksList book = new BooksList ();
-
         menu.displayWelcome();
-        book.displayBooksName();
+        BooksList totalList = new BooksList();
+        totalList.displayBookList();
 
     }
 
