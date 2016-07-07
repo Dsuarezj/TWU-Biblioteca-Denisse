@@ -29,7 +29,7 @@ public class Biblioteca {
         System.out.println();
         int numberOfBooks = listOfBooks.size();
         for (int i = 0; i < numberOfBooks; i++) {
-            System.out.println((i+1) + ". "+ listOfBooks.get(i));
+            System.out.println((i + 1) + ". " + listOfBooks.get(i));
         }
     }
 
@@ -38,11 +38,11 @@ public class Biblioteca {
         return listOfAvailableBooks;
     }
 
-    public void filterAvailableBooks(){
+    public void filterAvailableBooks() {
         listOfAvailableBooks.clear();
-        for (int i =0; i<getTotalBooks().size();i++){
+        for (int i = 0; i < getTotalBooks().size(); i++) {
             boolean bookStatusAvailable = getStatusOfABook(i);
-            if (bookStatusAvailable){
+            if (bookStatusAvailable) {
                 listOfAvailableBooks.add(listOfBooksTotal.get(i));
             }
         }
@@ -61,9 +61,9 @@ public class Biblioteca {
 
     private void filterNotAvailableBooks() {
         listOfAvailableBooks.clear();
-        for (int i =0; i<getTotalBooks().size();i++){
+        for (int i = 0; i < getTotalBooks().size(); i++) {
             boolean bookStatusAvailable = getStatusOfABook(i);
-            if (bookStatusAvailable == false){
+            if (bookStatusAvailable == false) {
                 listOfAvailableBooks.add(listOfBooksTotal.get(i));
             }
         }

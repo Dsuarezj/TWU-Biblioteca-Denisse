@@ -84,11 +84,11 @@ public class Menu {
             switch (userInput) {
                 case 1:
                     borrowBook();
-                    callMainMenu();
+                    callListBookMenu();
                     return;
                 case 2:
                     returnABook();
-                    callMainMenu();
+                    callListBookMenu();
                     return;
                 default:
                     System.out.printf("You chose wrong, try again. Select the option number \n");
@@ -96,6 +96,12 @@ public class Menu {
             }
         }
         callMainMenu();
+    }
+
+    private void callListBookMenu() {
+        displayListBookMenu();
+        getUserInput();
+        doBookList();
     }
 
     private void callMainMenu() {
@@ -115,7 +121,7 @@ public class Menu {
             return;
         } else {
             book = (Book) availableBookList.get(userBookSelection);
-            selectABookFromAList(userBookSelection, availableBookList);
+            setStateOfABook(userBookSelection, availableBookList, false);
             System.out.println("You borrow: " + book.getBookName() + ". Enjoy!");
 //            biblioteca.displayBookList(biblioteca.getAvailableBookList());
         }
@@ -134,16 +140,16 @@ public class Menu {
             return;
         } else {
             book = (Book) notAvailableBookList.get(userBookSelection);
-            selectABookFromAList(userBookSelection, notAvailableBookList);
+            setStateOfABook(userBookSelection, notAvailableBookList, true);
             System.out.println("You return: " + book.getBookName() + ". Thanks!");
 //            biblioteca.displayBookList(biblioteca.getAvailableBookList());
         }
 
     }
 
-    void selectABookFromAList(int bookID, ArrayList listOfBooks) {
+    void setStateOfABook(int bookID, ArrayList listOfBooks, boolean state) {
         book = (Book) listOfBooks.get(bookID);
-        book.setStateAvailable(false);
+        book.setBookStateAvailable(state);
         listOfBooks.clear();
     }
 
