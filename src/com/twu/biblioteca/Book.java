@@ -1,20 +1,18 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
-
 public class Book {
 
     private String bookName;
     private String bookAuthor;
     private int bookYear;
-    private boolean stateBorrow = true;
+    private boolean stateAvailable;
 
 
-    public Book (String bookName, String bookAuthor, int bookYear) {
+    public Book (String bookName, String bookAuthor, int bookYear, boolean stateAvailable) {
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;
         this.bookYear=bookYear;
-
+        this.stateAvailable = stateAvailable;
     }
 
     public String getBookName() {
@@ -29,6 +27,11 @@ public class Book {
         return bookYear;
     }
 
+    public void setStateAvailable (boolean state){
+        if (state) stateAvailable = true;
+        else stateAvailable = false;
+    }
+
     @Override
     public String toString() {
         return ("Book Name: "+this.getBookName()+ "\n"+
@@ -37,5 +40,8 @@ public class Book {
     }
 
 
+    public boolean getStateAvailable() {
+        return stateAvailable;
+    }
 }
 
