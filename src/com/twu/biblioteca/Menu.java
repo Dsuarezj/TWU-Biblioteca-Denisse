@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class Menu {
 
     int userInput;
-    ArrayList<String> mainMenuItems = new ArrayList<>();
-    ArrayList<String> borrowMenuItems = new ArrayList<>();
+    ArrayList<String> mainMenu = new ArrayList<>();
+    ArrayList<String> borrowMenu = new ArrayList<>();
     String[] mainMenuOptions = {"List of Books", "Quit"};
     String[] borrowMenuOptions = {"Borrow a book", "Return a book", "Go back"};
     Biblioteca biblioteca = new Biblioteca();
@@ -39,10 +39,10 @@ public class Menu {
     }
 
     public void displayMainMenu() {
-        mainMenuItems.clear();
-        addOption(mainMenuOptions, mainMenuItems);
+        mainMenu.clear();
+        addOption(mainMenuOptions, mainMenu);
         System.out.println("++++++++++ Menu Option ++++++++++");
-        printAMenu(mainMenuItems);
+        printAMenu(mainMenu);
         System.out.println();
         System.out.println("Select the option number");
     }
@@ -54,7 +54,7 @@ public class Menu {
 
 
     public void doSelectMainMenuOption() {
-        while (userInput != mainMenuItems.size()) {
+        while (userInput != mainMenu.size()) {
             switch (userInput) {
                 case 1:
                     doBookList();
@@ -71,16 +71,16 @@ public class Menu {
 
 
     public void displayListBookMenu() {
-        borrowMenuItems.clear();
-        addOption(borrowMenuOptions, borrowMenuItems);
+        borrowMenu.clear();
+        addOption(borrowMenuOptions, borrowMenu);
         System.out.println("++++++++++ What you want to do: ++++++++++");
-        printAMenu(borrowMenuItems);
+        printAMenu(borrowMenu);
         System.out.println();
         System.out.println("Select the option number");
     }
 
-    public void doBookListBookMenuOption() {
-        while (userInput != borrowMenuItems.size()) {
+    public void doBookListOption() {
+        while (userInput != borrowMenu.size()) {
             switch (userInput) {
                 case 1:
                     borrowBook();
@@ -106,10 +106,9 @@ public class Menu {
 
 
     private void borrowBook() {
-        System.out.println("Ingress the book number you want to borrow");
+        System.out.println("Ingress the book ID that you want to borrow");
         ArrayList availableBookList = biblioteca.getAvailableBookList();
         int userBookSelection = getUserInput() - 1;
-        System.out.println(availableBookList.size());
 
         if (userBookSelection < 0 || userBookSelection > availableBookList.size()) {
             System.out.println("We can't process that!");
@@ -124,8 +123,22 @@ public class Menu {
 
     private void returnABook() {
         System.out.println("++++++++++ List of your borrow books ++++++++++ ");
+        ArrayList notAvailableBookList = biblioteca.getNotAvailableBookList();
+        biblioteca.displayBookList(notAvailableBookList);
 
-        System.out.println("Return");
+        System.out.println("Ingress the book ID that you want to return");
+        int userBookSelection = getUserInput() - 1;
+
+        if (userBookSelection < 0 || userBookSelection > notAvailableBookList.size()) {
+            System.out.println("We can't process that!");
+            return;
+        } else {
+            book = (Book) notAvailableBookList.get(userBookSelection);
+            selectABookFromAList(userBookSelection, notAvailableBookList);
+            System.out.println("You return: " + book.getBookName() + ". Thanks!");
+//            biblioteca.displayBookList(biblioteca.getAvailableBookList());
+        }
+
     }
 
     void selectABookFromAList(int bookID, ArrayList listOfBooks) {
@@ -137,9 +150,10 @@ public class Menu {
 
     private void doBookList() {
         Biblioteca biblioteca = new Biblioteca();
+        System.out.println("++++++++++ The following books are available: ++++++++++");
         biblioteca.displayBookList(biblioteca.getAvailableBookList());
         displayListBookMenu();
         getUserInput();
-        doBookListBookMenuOption();
+        doBookListOption();
     }
 }
