@@ -23,6 +23,7 @@ public class BibliotecaTest {
 
     Book book = new Book(bookName, bookAuthor, bookYear, stateAvailable);
 
+    Menu menu;
 
     @Before
     public void setUp() {
@@ -60,7 +61,7 @@ public class BibliotecaTest {
         testAllBooks.add(book1);
 
         biblioteca.addBooksToTheBiblioteca(testAllBooks);
-        boolean statusOfABook= biblioteca.getStatusOfABook(0);
+        boolean statusOfABook = biblioteca.getStatusOfABook(0);
 
         assertEquals(true, statusOfABook);
 
@@ -84,21 +85,26 @@ public class BibliotecaTest {
         assertEquals(testAvailableBooks, resultAvailableBooks);
 
     }
-
-
-
     @Test
-    public void shouldReturnAllAvailableBooks() {
+    public void ReturnOnlyNotAvailableBooks() {
+        Book book1 = new Book("book1", bookAuthor, bookYear, true);
+        Book book2 = new Book("book2", bookAuthor, bookYear, false);
+        ArrayList testAllBooks = new ArrayList();
+        testAllBooks.add(book1);
+        testAllBooks.add(book2);
+        ArrayList testAvailableBooks = new ArrayList();
+        testAvailableBooks.add(book2);
+        ArrayList resultAvailableBooks;
 
-        //Arrange:
-        //Crear los libros
-        //Crear un array con los libros
-        //Crear biblioteca
+        biblioteca.addBooksToTheBiblioteca(testAllBooks);
 
-        //Llamar al metodo
-//        arrayallBookList.getAllAvailableBookList();
+        resultAvailableBooks = biblioteca.getNotAvailableBookList();
 
-//        Assert
-//
+        assertEquals(testAvailableBooks, resultAvailableBooks);
+
     }
+
+
+
+
 }

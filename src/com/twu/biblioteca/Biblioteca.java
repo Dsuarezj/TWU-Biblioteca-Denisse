@@ -26,29 +26,48 @@ public class Biblioteca {
 
 
     public void displayBookList(ArrayList listOfBooks) {
+        System.out.println("++++++++++ The following books are available: ++++++++++");
+        System.out.println();
         int numberOfBooks = listOfBooks.size();
         for (int i = 0; i < numberOfBooks; i++) {
-            System.out.println(listOfBooks.get(i));
+            System.out.println((i+1) + ". "+ listOfBooks.get(i));
         }
     }
 
     public ArrayList getAvailableBookList() {
-
-        for (int i =0; i<getTotalBooks().size();i++){
-            boolean bookStatusAvaiable = getStatusOfABook(i);
-            if (bookStatusAvaiable){
-                listOfAvailableBooks.add(listOfBooksTotal.get(i));
-            }
-        }
-
-
+        filterAvailableBooks();
         return listOfAvailableBooks;
     }
 
+    public void filterAvailableBooks(){
+        listOfAvailableBooks.clear();
+        for (int i =0; i<getTotalBooks().size();i++){
+            boolean bookStatusAvailable = getStatusOfABook(i);
+            if (bookStatusAvailable){
+                listOfAvailableBooks.add(listOfBooksTotal.get(i));
+            }
+        }
+    }
 
     public boolean getStatusOfABook(int i) {
         book = (Book) listOfBooksTotal.get(i);
         boolean bookStatus = book.getStateAvailable();
         return bookStatus;
+    }
+
+    public ArrayList getNotAvailableBookList() {
+        filterNotAvailableBooks();
+        return listOfAvailableBooks;
+    }
+
+    private void filterNotAvailableBooks() {
+        listOfAvailableBooks.clear();
+        for (int i =0; i<getTotalBooks().size();i++){
+            boolean bookStatusAvailable = getStatusOfABook(i);
+            if (bookStatusAvailable == false){
+                listOfAvailableBooks.add(listOfBooksTotal.get(i));
+            }
+        }
+
     }
 }

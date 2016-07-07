@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BibliotecaLauncher {
 
-    private static Book book1 = new Book("Clockwork orange", "Anthony Burgess", 1962,false);
+    private static Book book1 = new Book("Clockwork orange", "Anthony Burgess", 1962,true);
     private static Book book2 = new Book("Alice's Adventures in Wonderland","Lewis Carroll", 1865,true);
     static ArrayList listOfBookToIngress = new ArrayList();
 
@@ -16,11 +16,12 @@ public class BibliotecaLauncher {
 
         addListBooks();
         biblioteca.addBooksToTheBiblioteca(listOfBookToIngress);
-
         menu.displayWelcome();
-        menu.displayMenu();
+        menu.displayMainMenu();
         menu.getUserInput();
-        menu.doActionMenu();
+        menu.doSelectMainMenuOption();
+
+
     }
 
     public static ArrayList addListBooks(){
