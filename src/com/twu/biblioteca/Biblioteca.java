@@ -34,15 +34,19 @@ public class Biblioteca {
 
     public ArrayList getAvailableBookList() {
 
-//        getTotalBooks();
-//        book = (Book) listOfBooksTotal.get(1);
+        for (int i =0; i<getTotalBooks().size();i++){
+            boolean bookStatusAvaiable = getStatusOfABook(i);
+            if (bookStatusAvaiable){
+                listOfAvailableBooks.add(listOfBooksTotal.get(i));
+            }
+        }
 
-        return null;
+
+        return listOfAvailableBooks;
     }
 
 
     public boolean getStatusOfABook(int i) {
-        getTotalBooks();
         book = (Book) listOfBooksTotal.get(i);
         boolean bookStatus = book.getStateAvailable();
         return bookStatus;

@@ -52,7 +52,7 @@ public class Menu {
             switch (userInput){
                 case 1:
                     Biblioteca biblioteca = new Biblioteca();
-                    biblioteca.displayBookList(biblioteca.getTotalBooks());
+                    biblioteca.displayBookList(biblioteca.getAvailableBookList());
                     return;
                 default:
                     System.out.printf("You chose wrong, try again. Select the option number \n");
