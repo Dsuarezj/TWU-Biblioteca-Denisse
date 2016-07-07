@@ -15,7 +15,7 @@ public class MenuTest {
 
     private ByteArrayOutputStream byteArrayOutputStream;
     private Menu menu = new Menu();
-
+    private Biblioteca biblioteca = new Biblioteca();
 
     @Before
     public void setUp() {
@@ -24,22 +24,31 @@ public class MenuTest {
     }
 
     @Test
-    public void displayWelcomeTestNotNull() {
+    public void DisplayWelcomeTestNotNull() {
         menu.displayWelcome();
         assertNotNull(byteArrayOutputStream.toString());
     }
 
     @Test
-    public void displayWelcomeTest() {
+    public void DisplayWelcomeTest() {
         menu.displayWelcome();
-        assertEquals("Welcome to the best biblioteca ever!\n", byteArrayOutputStream.toString());
+        assertEquals("Welcome to: " + biblioteca.bibliotecaName + "\n", byteArrayOutputStream.toString());
     }
 
     @Test
     public void AddOptionToTheMenu() {
-        String optionTest = RandomStringUtils.randomAlphanumeric(2);
+
+        String option1 = RandomStringUtils.randomAlphanumeric(2);
+        String [] optionTest = {option1, RandomStringUtils.randomAlphanumeric(2)};
         menu.addOption(optionTest);
-        assertEquals(optionTest,menu.getOption(0));
+        assertEquals(option1,menu.getOption(0));
     }
+
+    @Test
+    public void ExitMenu() {
+
+
+    }
+
 
 }
