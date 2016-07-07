@@ -41,11 +41,11 @@ public class MenuTest {
     public void AddOptionToTheMenu() {
 
         String option1 = RandomStringUtils.randomAlphanumeric(2);
-        String [] optionTest = {option1, RandomStringUtils.randomAlphanumeric(2)};
+        String[] optionTest = {option1, RandomStringUtils.randomAlphanumeric(2)};
         ArrayList<String> mainMenuItems = new ArrayList<>();
 
         menu.addOption(optionTest, mainMenuItems);
-        assertEquals(option1,menu.getOption(0,mainMenuItems));
+        assertEquals(option1, menu.getOption(0, mainMenuItems));
     }
 
     @Test
@@ -71,7 +71,7 @@ public class MenuTest {
         testIfIBorrowBook2.add(book1);
 
 
-        menu.selectABookFromAList(1, AvailableBooks);
+        menu.setStateOfABook(1, AvailableBooks, false);
 
         AvailableBooks = biblioteca.getAvailableBookList();
 

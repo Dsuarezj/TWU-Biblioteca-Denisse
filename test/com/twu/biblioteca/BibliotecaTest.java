@@ -85,6 +85,7 @@ public class BibliotecaTest {
         assertEquals(testAvailableBooks, resultAvailableBooks);
 
     }
+
     @Test
     public void ReturnOnlyNotAvailableBooks() {
         Book book1 = new Book("book1", bookAuthor, bookYear, true);
@@ -103,8 +104,6 @@ public class BibliotecaTest {
         assertEquals(testAvailableBooks, resultAvailableBooks);
 
     }
-
-
 
 
 }

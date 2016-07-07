@@ -8,10 +8,10 @@ public class Book {
     private boolean stateAvailable;
 
 
-    public Book (String bookName, String bookAuthor, int bookYear, boolean stateAvailable) {
+    public Book(String bookName, String bookAuthor, int bookYear, boolean stateAvailable) {
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;
-        this.bookYear=bookYear;
+        this.bookYear = bookYear;
         this.stateAvailable = stateAvailable;
     }
 
@@ -27,16 +27,16 @@ public class Book {
         return bookYear;
     }
 
-    public void setStateAvailable (boolean state){
+    public void setBookStateAvailable(boolean state) {
         if (state) stateAvailable = true;
         else stateAvailable = false;
     }
 
     @Override
     public String toString() {
-        return ("Book Name: "+this.getBookName()+ "\n"+
-                " Author: "+ this.getBookAuthor() +"\n"+
-                " Year : " + this.getBookYear())+ "\n";
+        return ("Book Name: " + this.getBookName() + "\n" +
+                " Author: " + this.getBookAuthor() + "\n" +
+                " Year : " + this.getBookYear()) + "\n";
     }
 
 
