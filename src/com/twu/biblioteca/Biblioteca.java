@@ -26,7 +26,6 @@ public class Biblioteca {
 
 
     public void displayBookList(ArrayList listOfBooks) {
-        System.out.println("++++++++++ The following books are available: ++++++++++");
         System.out.println();
         int numberOfBooks = listOfBooks.size();
         for (int i = 0; i < numberOfBooks; i++) {
