@@ -109,26 +109,33 @@ public class Menu {
 
 
     private void borrowBook() {
-        System.out.println("Ingress the book ID that you want to borrow");
         List<Book> availableBookList = biblioteca.getAvailableBookList();
+        if(availableBookList.size() == 0){
+            System.out.println("There are not books available. Come back later!");
+            return;
+        }
+
+        System.out.println("Ingress the book ID that you want to borrow");
         int userBookSelection = getUserInput() - 1;
 
         if (userBookSelection < 0 || userBookSelection > availableBookList.size()) {
             System.out.println("We can't process that!");
             return;
         } else {
-            book = (Book) availableBookList.get(userBookSelection);
+            book = availableBookList.get(userBookSelection);
             setStateOfABook(userBookSelection, availableBookList, false);
             System.out.println("You borrow: " + book.getBookName() + ". Enjoy!");
-//            biblioteca.displayBookList(biblioteca.getAvailableBookList());
         }
     }
 
     private void returnABook() {
         System.out.println("++++++++++ List of your borrow books ++++++++++ ");
         List<Book> notAvailableBookList = biblioteca.getNotAvailableBookList();
+        if(notAvailableBookList.size() == 0){
+            System.out.println("You don't have any borrow books!");
+            return;
+        }
         biblioteca.displayBookList(notAvailableBookList);
-
         System.out.println("Ingress the book ID that you want to return");
         int userBookSelection = getUserInput() - 1;
 
@@ -136,7 +143,7 @@ public class Menu {
             System.out.println("We can't process that!");
             return;
         } else {
-            book = (Book) notAvailableBookList.get(userBookSelection);
+            book = notAvailableBookList.get(userBookSelection);
             setStateOfABook(userBookSelection, notAvailableBookList, true);
             System.out.println("You return: " + book.getBookName() + ". Thanks!");
 //            biblioteca.displayBookList(biblioteca.getAvailableBookList());
