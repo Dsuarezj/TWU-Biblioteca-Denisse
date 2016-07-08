@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.lang.RandomStringUtils;
 
@@ -64,7 +65,7 @@ public class MenuTest {
         testAllBooks.add(book2);
         biblioteca.addBooksToTheBiblioteca(testAllBooks);
 
-        ArrayList AvailableBooks;
+        List<Book> AvailableBooks;
         AvailableBooks = biblioteca.getAvailableBookList();
 
         ArrayList testIfIBorrowBook2 = new ArrayList();
