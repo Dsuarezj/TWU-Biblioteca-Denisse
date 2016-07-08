@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -84,11 +85,11 @@ public class Menu {
             switch (userInput) {
                 case 1:
                     borrowBook();
-                    callListBookMenu();
+                    callMainMenu();
                     return;
                 case 2:
                     returnABook();
-                    callListBookMenu();
+                    callMainMenu();
                     return;
                 default:
                     System.out.printf("You chose wrong, try again. Select the option number \n");
@@ -98,11 +99,7 @@ public class Menu {
         callMainMenu();
     }
 
-    private void callListBookMenu() {
-        displayListBookMenu();
-        getUserInput();
-        doBookList();
-    }
+
 
     private void callMainMenu() {
         displayMainMenu();
@@ -113,7 +110,7 @@ public class Menu {
 
     private void borrowBook() {
         System.out.println("Ingress the book ID that you want to borrow");
-        ArrayList availableBookList = biblioteca.getAvailableBookList();
+        List<Book> availableBookList = biblioteca.getAvailableBookList();
         int userBookSelection = getUserInput() - 1;
 
         if (userBookSelection < 0 || userBookSelection > availableBookList.size()) {
@@ -129,7 +126,7 @@ public class Menu {
 
     private void returnABook() {
         System.out.println("++++++++++ List of your borrow books ++++++++++ ");
-        ArrayList notAvailableBookList = biblioteca.getNotAvailableBookList();
+        List<Book> notAvailableBookList = biblioteca.getNotAvailableBookList();
         biblioteca.displayBookList(notAvailableBookList);
 
         System.out.println("Ingress the book ID that you want to return");
@@ -147,7 +144,7 @@ public class Menu {
 
     }
 
-    void setStateOfABook(int bookID, ArrayList listOfBooks, boolean state) {
+    void setStateOfABook(int bookID, List<Book> listOfBooks, boolean state) {
         book = (Book) listOfBooks.get(bookID);
         book.setBookStateAvailable(state);
         listOfBooks.clear();

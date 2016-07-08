@@ -1,31 +1,31 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Biblioteca {
 
     String bibliotecaName = "Bangalore Public Library";
-    static ArrayList listOfBooksTotal = new ArrayList();
-    static ArrayList listOfAvailableBooks = new ArrayList();
-    Book book;
+    static List<Book> totalBooks = new ArrayList();
+    static List<Book> listOfAvailableBooks = new ArrayList();
 
     public void startBookNameList() {
         System.out.println("The books aviable are:");
     }
 
 
-    public void addBooksToTheBiblioteca(ArrayList books) {
-        for (int i = 0; i < books.size(); i++)
-            listOfBooksTotal.add(books.get(i));
+    public void addBooksToTheBiblioteca(List<Book> books) {
+        for (Book book : books) {
+            totalBooks.add(book);
+        }
+    }
+
+    public List<Book> getTotalBooks() {
+        return totalBooks;
     }
 
 
-    public ArrayList getTotalBooks() {
-        return listOfBooksTotal;
-    }
-
-
-    public void displayBookList(ArrayList listOfBooks) {
+    public void displayBookList(List<Book> listOfBooks) {
         System.out.println();
         int numberOfBooks = listOfBooks.size();
         for (int i = 0; i < numberOfBooks; i++) {
@@ -33,40 +33,30 @@ public class Biblioteca {
         }
     }
 
-    public ArrayList getAvailableBookList() {
-        filterAvailableBooks();
-        return listOfAvailableBooks;
-    }
-
-    public void filterAvailableBooks() {
-        listOfAvailableBooks.clear();
-        for (int i = 0; i < getTotalBooks().size(); i++) {
-            boolean bookStatusAvailable = getStatusOfABook(i);
-            if (bookStatusAvailable) {
-                listOfAvailableBooks.add(listOfBooksTotal.get(i));
-            }
+    public List<Book> getAvailableBookList() {
+        List<Book> availableBooks = new ArrayList<>();
+        for (Book book : totalBooks) {
+            if (book.getStateAvailable())
+                availableBooks.add(book);
         }
+        return availableBooks;
     }
 
-    public boolean getStatusOfABook(int i) {
-        book = (Book) listOfBooksTotal.get(i);
-        boolean bookStatus = book.getStateAvailable();
-        return bookStatus;
-    }
 
-    public ArrayList getNotAvailableBookList() {
-        filterNotAvailableBooks();
-        return listOfAvailableBooks;
-    }
-
-    private void filterNotAvailableBooks() {
-        listOfAvailableBooks.clear();
-        for (int i = 0; i < getTotalBooks().size(); i++) {
-            boolean bookStatusAvailable = getStatusOfABook(i);
+    public List<Book> getNotAvailableBookList() {
+        List<Book> notAvailableBooks = new ArrayList<>();
+        for (Book book : totalBooks) {
+            boolean bookStatusAvailable = book.getStateAvailable();
             if (bookStatusAvailable == false) {
-                listOfAvailableBooks.add(listOfBooksTotal.get(i));
+                notAvailableBooks.add(book);
             }
         }
+        return notAvailableBooks;
+    }
 
+
+    public void cleanUp() {
+        listOfAvailableBooks.clear();
+        totalBooks.clear();
     }
 }

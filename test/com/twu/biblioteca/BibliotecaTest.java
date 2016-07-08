@@ -1,11 +1,14 @@
 package com.twu.biblioteca;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -32,6 +35,11 @@ public class BibliotecaTest {
 
     }
 
+    @After
+    public void cleanUp() {
+        biblioteca.cleanUp();
+    }
+
     @Test
     public void DisplayWelcomeText() {
         biblioteca.startBookNameList();
@@ -54,36 +62,15 @@ public class BibliotecaTest {
         assertEquals(testBookList, biblioteca.getTotalBooks());
     }
 
-    @Test
-    public void GetBookStatusFromBiblioteca() {
-        Book book1 = new Book(bookName, bookAuthor, bookYear, true);
-        ArrayList testAllBooks = new ArrayList();
-        testAllBooks.add(book1);
-
-        biblioteca.addBooksToTheBiblioteca(testAllBooks);
-        boolean statusOfABook = biblioteca.getStatusOfABook(0);
-
-        assertEquals(true, statusOfABook);
-
-    }
 
     @Test
     public void ReturnOnlyAvailableBooks() {
-        Book book1 = new Book(bookName, bookAuthor, bookYear, true);
-        Book book2 = new Book(bookName, bookAuthor, bookYear, false);
-        ArrayList testAllBooks = new ArrayList();
-        testAllBooks.add(book1);
-        testAllBooks.add(book2);
-        ArrayList testAvailableBooks = new ArrayList();
-        testAvailableBooks.add(book1);
-        ArrayList resultAvailableBooks;
+        Book availableBook = new Book(bookName, bookAuthor, bookYear, true);
+        Book unavailableBook = new Book(bookName, bookAuthor, bookYear, false);
 
-        biblioteca.addBooksToTheBiblioteca(testAllBooks);
+        biblioteca.addBooksToTheBiblioteca(Arrays.asList(availableBook, unavailableBook));
 
-        resultAvailableBooks = biblioteca.getAvailableBookList();
-
-        assertEquals(testAvailableBooks, resultAvailableBooks);
-
+        assertEquals(Arrays.asList(availableBook), biblioteca.getAvailableBookList());
     }
 
     @Test
@@ -95,14 +82,13 @@ public class BibliotecaTest {
         testAllBooks.add(book2);
         ArrayList testAvailableBooks = new ArrayList();
         testAvailableBooks.add(book2);
-        ArrayList resultAvailableBooks;
+        List<Book> resultAvailableBooks;
 
         biblioteca.addBooksToTheBiblioteca(testAllBooks);
 
         resultAvailableBooks = biblioteca.getNotAvailableBookList();
 
         assertEquals(testAvailableBooks, resultAvailableBooks);
-
     }
 
 
