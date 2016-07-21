@@ -8,8 +8,6 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang.RandomStringUtils;
-
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -27,30 +25,19 @@ public class MenuTest {
     }
 
     @Test
-    public void DisplayWelcomeTestNotNull() {
+    public void testWelcomeMessageIsNotNull() {
         menu.displayWelcome();
         assertNotNull(byteArrayOutputStream.toString());
     }
 
     @Test
-    public void DisplayWelcomeTest() {
+    public void testWelcomeMessageDisplayBibliotecaName() {
         menu.displayWelcome();
         assertEquals("Welcome to: " + biblioteca.bibliotecaName + "\n", byteArrayOutputStream.toString());
     }
 
     @Test
-    public void AddOptionToTheMenu() {
-
-        String option1 = RandomStringUtils.randomAlphanumeric(2);
-        String[] optionTest = {option1, RandomStringUtils.randomAlphanumeric(2)};
-        ArrayList<String> mainMenuItems = new ArrayList<>();
-
-        menu.addOption(optionTest, mainMenuItems);
-        assertEquals(option1, mainMenuItems.get(0));
-    }
-    
-    @Test
-    public void BorrowABook() {
+    public void testBookListAfterBorrowABook() {
         Book book1 = new Book("Book1", "Author1", 1999, true);
         Book book2 = new Book("Book2", "Author1", 1888, true);
         ArrayList testAllBooks = new ArrayList();
