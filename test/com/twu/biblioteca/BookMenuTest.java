@@ -18,5 +18,7 @@ public class BookMenuTest {
         System.setOut(new PrintStream(byteArrayOutputStream));
     }
 
-
+    @Test
+    public void test() {
+    }
 }
