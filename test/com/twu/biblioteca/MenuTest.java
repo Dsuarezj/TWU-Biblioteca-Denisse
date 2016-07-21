@@ -46,16 +46,9 @@ public class MenuTest {
         ArrayList<String> mainMenuItems = new ArrayList<>();
 
         menu.addOption(optionTest, mainMenuItems);
-        assertEquals(option1, menu.getOption(0, mainMenuItems));
+        assertEquals(option1, mainMenuItems.get(0));
     }
-
-    @Test
-    public void ExitMenu() {
-
-
-    }
-
-
+    
     @Test
     public void BorrowABook() {
         Book book1 = new Book("Book1", "Author1", 1999, true);
@@ -66,18 +59,19 @@ public class MenuTest {
         biblioteca.addBooksToTheBiblioteca(testAllBooks);
 
         List<Book> AvailableBooks;
-        AvailableBooks = biblioteca.getAvailableBookList();
+        AvailableBooks = biblioteca.getBooksThatAreAvailable(true);
+        assertEquals(2, AvailableBooks.size());
 
-        ArrayList testIfIBorrowBook2 = new ArrayList();
-        testIfIBorrowBook2.add(book1);
-
+//        ArrayList testIfIBorrowBook2 = new ArrayList();
+//        testIfIBorrowBook2.add(book1);
 
         menu.setStateOfABook(1, AvailableBooks, false);
 
-        AvailableBooks = biblioteca.getAvailableBookList();
+        AvailableBooks = biblioteca.getBooksThatAreAvailable(true);
 
-
-        assertEquals(testIfIBorrowBook2, AvailableBooks);
+        assertEquals(1, AvailableBooks.size());
+        assertEquals("Book1", AvailableBooks.get(0).getBookName());
+//        assertEquals(testIfIBorrowBook2, AvailableBooks);
 
 
     }

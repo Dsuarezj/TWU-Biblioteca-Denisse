@@ -8,7 +8,7 @@ public class Menu {
 
     int userInput;
     ArrayList<String> mainMenu = new ArrayList<>();
-    ArrayList<String> borrowMenu = new ArrayList<>();
+    ArrayList<String> booksMenu = new ArrayList<>();
     String[] mainMenuOptions = {"List of Books", "Quit"};
     String[] borrowMenuOptions = {"Borrow a book", "Return a book", "Go back"};
     Biblioteca biblioteca = new Biblioteca();
@@ -25,9 +25,6 @@ public class Menu {
             menu.add(options[i]);
     }
 
-    public String getOption(int itemPosition, ArrayList<String> menu) {
-        return menu.get(itemPosition);
-    }
 
     public void readUserInput() {
         Scanner input = new Scanner(System.in);
@@ -72,16 +69,16 @@ public class Menu {
 
 
     public void displayListBookMenu() {
-        borrowMenu.clear();
-        addOption(borrowMenuOptions, borrowMenu);
+        booksMenu.clear();
+        addOption(borrowMenuOptions, booksMenu);
         System.out.println("++++++++++ What you want to do: ++++++++++");
-        printAMenu(borrowMenu);
+        printAMenu(booksMenu);
         System.out.println();
         System.out.println("Select the option number");
     }
 
     public void doBookListOption() {
-        while (userInput != borrowMenu.size()) {
+        while (userInput != booksMenu.size()) {
             switch (userInput) {
                 case 1:
                     borrowBook();
@@ -109,7 +106,7 @@ public class Menu {
 
 
     private void borrowBook() {
-        List<Book> availableBookList = biblioteca.getAvailableBookList();
+        List<Book> availableBookList = biblioteca.getBooksThatAreAvailable(true);
         if(availableBookList.size() == 0){
             System.out.println("There are not books available. Come back later!");
             return;
@@ -130,7 +127,7 @@ public class Menu {
 
     private void returnABook() {
         System.out.println("++++++++++ List of your borrow books ++++++++++ ");
-        List<Book> notAvailableBookList = biblioteca.getNotAvailableBookList();
+        List<Book> notAvailableBookList = biblioteca.getBooksThatAreAvailable(false);
         if(notAvailableBookList.size() == 0){
             System.out.println("You don't have any borrow books!");
             return;
@@ -146,13 +143,13 @@ public class Menu {
             book = notAvailableBookList.get(userBookSelection);
             setStateOfABook(userBookSelection, notAvailableBookList, true);
             System.out.println("You return: " + book.getBookName() + ". Thanks!");
-//            biblioteca.displayBookList(biblioteca.getAvailableBookList());
+//            biblioteca.displayBookList(biblioteca.getBooksThatAreAvailable());
         }
 
     }
 
     void setStateOfABook(int bookID, List<Book> listOfBooks, boolean state) {
-        book = (Book) listOfBooks.get(bookID);
+        book = listOfBooks.get(bookID);
         book.setBookStateAvailable(state);
         listOfBooks.clear();
     }
@@ -161,7 +158,7 @@ public class Menu {
     private void doBookList() {
         Biblioteca biblioteca = new Biblioteca();
         System.out.println("++++++++++ The following books are available: ++++++++++");
-        biblioteca.displayBookList(biblioteca.getAvailableBookList());
+        biblioteca.displayBookList(biblioteca.getBooksThatAreAvailable(true));
         displayListBookMenu();
         getUserInput();
         doBookListOption();

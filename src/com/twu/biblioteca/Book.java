@@ -19,29 +19,21 @@ public class Book {
         return bookName;
     }
 
-    public String getBookAuthor() {
-        return bookAuthor;
-    }
-
-    public int getBookYear() {
-        return bookYear;
+    public boolean isAvailable() {
+        return stateAvailable;
     }
 
     public void setBookStateAvailable(boolean state) {
-        if (state) stateAvailable = true;
-        else stateAvailable = false;
+        stateAvailable = state;
     }
 
     @Override
     public String toString() {
-        return ("Book Name: " + this.getBookName() + "\n" +
-                " Author: " + this.getBookAuthor() + "\n" +
-                " Year : " + this.getBookYear()) + "\n";
+        return ("Book Name: " + this.bookName + "\n" +
+                " Author: " + this.bookAuthor + "\n" +
+                " Year : " + this.bookYear) + "\n";
     }
 
 
-    public boolean getStateAvailable() {
-        return stateAvailable;
-    }
 }
 

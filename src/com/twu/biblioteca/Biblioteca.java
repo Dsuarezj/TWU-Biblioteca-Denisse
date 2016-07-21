@@ -13,6 +13,13 @@ public class Biblioteca {
         System.out.println("The books aviable are:");
     }
 
+    public void displayBookList(List<Book> listOfBooks) {
+        System.out.println();
+        int numberOfBooks = listOfBooks.size();
+        for (int i = 0; i < numberOfBooks; i++) {
+            System.out.println((i + 1) + ". " + listOfBooks.get(i));
+        }
+    }
 
     public void addBooksToTheBiblioteca(List<Book> books) {
         for (Book book : books) {
@@ -25,33 +32,17 @@ public class Biblioteca {
     }
 
 
-    public void displayBookList(List<Book> listOfBooks) {
-        System.out.println();
-        int numberOfBooks = listOfBooks.size();
-        for (int i = 0; i < numberOfBooks; i++) {
-            System.out.println((i + 1) + ". " + listOfBooks.get(i));
-        }
-    }
-
-    public List<Book> getAvailableBookList() {
-        List<Book> availableBooks = new ArrayList<>();
+    public List<Book> getBooksThatAreAvailable(boolean askedState) {
+        List<Book> askedBooks = new ArrayList<>();
         for (Book book : totalBooks) {
-            if (book.getStateAvailable())
-                availableBooks.add(book);
-        }
-        return availableBooks;
-    }
-
-
-    public List<Book> getNotAvailableBookList() {
-        List<Book> notAvailableBooks = new ArrayList<>();
-        for (Book book : totalBooks) {
-            boolean bookStatusAvailable = book.getStateAvailable();
-            if (bookStatusAvailable == false) {
-                notAvailableBooks.add(book);
+            if (askedState && book.isAvailable()) {
+                askedBooks.add(book);
+            }
+            if (!askedState && !book.isAvailable()) {
+                askedBooks.add(book);
             }
         }
-        return notAvailableBooks;
+        return askedBooks;
     }
 
 
