@@ -26,8 +26,6 @@ public class BibliotecaTest {
 
     Book book = new Book(bookName, bookAuthor, bookYear, stateAvailable);
 
-    Menu menu;
-
     @Before
     public void setUp() {
         byteArrayOutputStream = new ByteArrayOutputStream();
@@ -41,17 +39,14 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void DisplayWelcomeText() {
+    public void testDisplayWelcomeText() {
         biblioteca.startBookNameList();
         assertEquals("The books aviable are:\n", byteArrayOutputStream.toString());
     }
 
     @Test
-    public void GetBookInformation() {
-        assertEquals(bookName, book.getBookName());
-        assertEquals(bookAuthor, book.getBookAuthor());
-        assertEquals(bookYear, book.getBookYear());
-        assertEquals(stateAvailable, book.getStateAvailable());
+    public void testGetStateAvailableOfABook() {
+        assertEquals(stateAvailable, book.isAvailable());
     }
 
     @Test
@@ -70,7 +65,7 @@ public class BibliotecaTest {
 
         biblioteca.addBooksToTheBiblioteca(Arrays.asList(availableBook, unavailableBook));
 
-        assertEquals(Arrays.asList(availableBook), biblioteca.getAvailableBookList());
+        assertEquals(Arrays.asList(availableBook), biblioteca.getBooksThatAreAvailable(true));
     }
 
     @Test
@@ -86,7 +81,7 @@ public class BibliotecaTest {
 
         biblioteca.addBooksToTheBiblioteca(testAllBooks);
 
-        resultAvailableBooks = biblioteca.getNotAvailableBookList();
+        resultAvailableBooks = biblioteca.getBooksThatAreAvailable(false);
 
         assertEquals(testAvailableBooks, resultAvailableBooks);
     }
