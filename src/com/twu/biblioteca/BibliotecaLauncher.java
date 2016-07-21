@@ -10,15 +10,15 @@ public class BibliotecaLauncher {
 
     public static void main(String[] args) {
 
-        Menu menu = new Menu();
+        MainMenu mainMenu = new MainMenu();
         Biblioteca biblioteca = new Biblioteca();
 
         addListBooks();
         biblioteca.addBooksToTheBiblioteca(listOfBookToIngress);
-        menu.displayWelcome();
-        menu.displayMainMenu();
-        menu.getUserInput();
-        menu.doSelectMainMenuOption();
+        mainMenu.displayWelcome();
+        mainMenu.displayMenu(mainMenu.getMainMenu());
+        mainMenu.getUserInput();
+        mainMenu.doSelectMainMenuOption();
 
 
     }
