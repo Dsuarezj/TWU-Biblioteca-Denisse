@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Menu {
 
@@ -36,7 +37,7 @@ public class Menu {
         System.out.println("Select the option number");
     }
 
-    private void printAMenu(List items) {
+    private void printAMenu(List <String> items) {
         for (int i = 0; i < items.size(); i++)
             System.out.print((i + 1) + ". " + items.get(i) + "\t");
     }
@@ -60,7 +61,6 @@ public class Menu {
 
 
     public void displayListBookMenu() {
-        booksMenu.clear();
         System.out.println("++++++++++ What you want to do: ++++++++++");
         printAMenu(booksMenu);
         System.out.println();
@@ -138,7 +138,7 @@ public class Menu {
 
     }
 
-    void setStateOfABook(int bookID, List<Book> listOfBooks, boolean state) {
+    private void setStateOfABook(int bookID, List<Book> listOfBooks, boolean state) {
         book = listOfBooks.get(bookID);
         book.setBookStateAvailable(state);
         listOfBooks.clear();
