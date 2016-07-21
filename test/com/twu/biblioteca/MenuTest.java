@@ -12,10 +12,10 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class MainMenuTest {
+public class MenuTest {
 
     private ByteArrayOutputStream byteArrayOutputStream;
-    private MainMenu mainMenu = new MainMenu();
+    private Menu menu = new Menu();
     private Biblioteca biblioteca = new Biblioteca();
 
     @Before
@@ -26,13 +26,13 @@ public class MainMenuTest {
 
     @Test
     public void testWelcomeMessageIsNotNull() {
-        mainMenu.displayWelcome();
+        menu.displayWelcome();
         assertNotNull(byteArrayOutputStream.toString());
     }
 
     @Test
     public void testDisplayWelcomeMessageWithBibliotecaName() {
-        mainMenu.displayWelcome();
+        menu.displayWelcome();
         assertEquals("Welcome to: " + biblioteca.bibliotecaName + "\n", byteArrayOutputStream.toString());
     }
 
@@ -40,7 +40,7 @@ public class MainMenuTest {
     public void testDisplayMainMenu() {
         List<String> mainMenuItems = Arrays.asList("List of Books", "List of Movies", "Quit");
 
-        mainMenu.displayMenu(mainMenuItems);
+        menu.displayMenu(mainMenuItems);
         String expectedMainMenu = "++++++++++ Menu Option ++++++++++\n" +
                                     "1. List of Books\t2. List of Movies\t3. Quit\t\n" +
                                     "Select the option number\n";
@@ -53,7 +53,7 @@ public class MainMenuTest {
 
         List<String> mainMenuItems = Arrays.asList("Borrow a book", "Return a book", "Go back");
 
-        mainMenu.displayMenu(mainMenuItems);
+        menu.displayMenu(mainMenuItems);
         String expectedMainMenu = "++++++++++ Menu Option ++++++++++\n" +
                 "1. Borrow a book\t2. Return a book\t3. Go back\t\n" +
                 "Select the option number\n";
