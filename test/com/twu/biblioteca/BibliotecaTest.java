@@ -44,28 +44,25 @@ public class BibliotecaTest {
         assertEquals("The books aviable are:\n", byteArrayOutputStream.toString());
     }
 
-    @Test
-    public void testGetStateAvailableOfABook() {
-        assertEquals(stateAvailable, book.isAvailable());
-    }
 
     @Test
-    public void AddBookToTheBiblioteca() {
-        ArrayList testBookList = new ArrayList();
-        testBookList.add(0, book);
+    public void testAddBookToTheBiblioteca() {
+        List testBookList = Arrays.asList(book);
         biblioteca.addBooksToTheBiblioteca(testBookList);
         assertEquals(testBookList, biblioteca.getTotalBooks());
     }
 
 
     @Test
-    public void ReturnOnlyAvailableBooks() {
+    public void testReturnOnlyAvailableBooks() {
         Book availableBook = new Book(bookName, bookAuthor, bookYear, true);
         Book unavailableBook = new Book(bookName, bookAuthor, bookYear, false);
+        List<Book> allBooks = Arrays.asList(availableBook, unavailableBook);
+        List<Book> expectedOnlyAvailable = Arrays.asList(availableBook);
 
-        biblioteca.addBooksToTheBiblioteca(Arrays.asList(availableBook, unavailableBook));
+        biblioteca.addBooksToTheBiblioteca(allBooks);
 
-        assertEquals(Arrays.asList(availableBook), biblioteca.getBooksThatAreAvailable(true));
+        assertEquals(expectedOnlyAvailable, biblioteca.getBooksThatAreAvailable(true));
     }
 
     @Test
