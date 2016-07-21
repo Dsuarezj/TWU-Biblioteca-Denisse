@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -7,10 +9,8 @@ import java.util.ArrayList;
 public class Menu {
 
     int userInput;
-    ArrayList<String> mainMenu = new ArrayList<>();
-    ArrayList<String> booksMenu = new ArrayList<>();
-    String[] mainMenuOptions = {"List of Books", "Quit"};
-    String[] borrowMenuOptions = {"Borrow a book", "Return a book", "Go back"};
+    List<String> mainMenu =  Arrays.asList("List of Books","List of Movies", "Quit");
+    List<String> booksMenu = Arrays.asList("Borrow a book", "Return a book", "Go back");
     Biblioteca biblioteca = new Biblioteca();
     Book book;
 
@@ -18,11 +18,6 @@ public class Menu {
     void displayWelcome() {
         String welcomeMessage = "Welcome to: " + biblioteca.bibliotecaName;
         System.out.println(welcomeMessage);
-    }
-
-    public void addOption(String[] options, ArrayList<String> menu) {
-        for (int i = 0; i < options.length; i++)
-            menu.add(options[i]);
     }
 
 
@@ -37,15 +32,13 @@ public class Menu {
     }
 
     public void displayMainMenu() {
-        mainMenu.clear();
-        addOption(mainMenuOptions, mainMenu);
         System.out.println("++++++++++ Menu Option ++++++++++");
         printAMenu(mainMenu);
         System.out.println();
         System.out.println("Select the option number");
     }
 
-    private void printAMenu(ArrayList items) {
+    private void printAMenu(List items) {
         for (int i = 0; i < items.size(); i++)
             System.out.print((i + 1) + ". " + items.get(i) + "\t");
     }
@@ -70,7 +63,6 @@ public class Menu {
 
     public void displayListBookMenu() {
         booksMenu.clear();
-        addOption(borrowMenuOptions, booksMenu);
         System.out.println("++++++++++ What you want to do: ++++++++++");
         printAMenu(booksMenu);
         System.out.println();
