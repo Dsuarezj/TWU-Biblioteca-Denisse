@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,12 +24,15 @@ public class BibliotecaTest {
     private boolean stateAvailable = true;
 
     Book book = new Book(bookName, bookAuthor, bookYear, stateAvailable);
+    Book availableBook = new Book(bookName, bookAuthor, bookYear, true);
+    Book unavailableBook = new Book(bookName, bookAuthor, bookYear, false);
+    List<Book> allBooks = Arrays.asList(availableBook, unavailableBook);
+
 
     @Before
     public void setUp() {
         byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
-
     }
 
     @After
@@ -47,40 +49,24 @@ public class BibliotecaTest {
 
     @Test
     public void testAddBookToTheBiblioteca() {
-        List testBookList = Arrays.asList(book);
+        List<Book> testBookList = Arrays.asList(book);
         biblioteca.addBooksToTheBiblioteca(testBookList);
         assertEquals(testBookList, biblioteca.getTotalBooks());
     }
 
 
     @Test
-    public void testReturnOnlyAvailableBooks() {
-        Book availableBook = new Book(bookName, bookAuthor, bookYear, true);
-        Book unavailableBook = new Book(bookName, bookAuthor, bookYear, false);
-        List<Book> allBooks = Arrays.asList(availableBook, unavailableBook);
+    public void testReturnAvailableBooks() {
         List<Book> expectedOnlyAvailable = Arrays.asList(availableBook);
-
         biblioteca.addBooksToTheBiblioteca(allBooks);
-
         assertEquals(expectedOnlyAvailable, biblioteca.getBooksThatAreAvailable(true));
     }
 
     @Test
-    public void ReturnOnlyNotAvailableBooks() {
-        Book book1 = new Book("book1", bookAuthor, bookYear, true);
-        Book book2 = new Book("book2", bookAuthor, bookYear, false);
-        ArrayList testAllBooks = new ArrayList();
-        testAllBooks.add(book1);
-        testAllBooks.add(book2);
-        ArrayList testAvailableBooks = new ArrayList();
-        testAvailableBooks.add(book2);
-        List<Book> resultAvailableBooks;
-
-        biblioteca.addBooksToTheBiblioteca(testAllBooks);
-
-        resultAvailableBooks = biblioteca.getBooksThatAreAvailable(false);
-
-        assertEquals(testAvailableBooks, resultAvailableBooks);
+    public void testReturnNotAvailableBooks() {
+        List<Book> expectedNotAvailable = Arrays.asList(unavailableBook);
+        biblioteca.addBooksToTheBiblioteca(allBooks);
+        assertEquals(expectedNotAvailable, biblioteca.getBooksThatAreAvailable(false));
     }
 
 
