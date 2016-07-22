@@ -23,10 +23,10 @@ public class BibliotecaTest {
 
     private boolean stateAvailable = true;
 
-    Book book = new Book(bookName, bookAuthor, bookYear, stateAvailable);
-    Book availableBook = new Book(bookName, bookAuthor, bookYear, true);
-    Book unavailableBook = new Book(bookName, bookAuthor, bookYear, false);
-    List<Book> allBooks = Arrays.asList(availableBook, unavailableBook);
+    Item item = new Item(bookName, bookAuthor, bookYear, stateAvailable);
+    Item availableItem = new Item(bookName, bookAuthor, bookYear, true);
+    Item unavailableItem = new Item(bookName, bookAuthor, bookYear, false);
+    List<Item> allItems = Arrays.asList(availableItem, unavailableItem);
 
 
     @Before
@@ -43,30 +43,30 @@ public class BibliotecaTest {
     @Test
     public void testDisplayWelcomeText() {
         biblioteca.startBookNameList();
-        assertEquals("The books aviable are:\n", byteArrayOutputStream.toString());
+        assertEquals("The following articles are aviable:\n", byteArrayOutputStream.toString());
     }
 
 
     @Test
     public void testAddBookToTheBiblioteca() {
-        List<Book> testBookList = Arrays.asList(book);
-        biblioteca.addBooksToTheBiblioteca(testBookList);
-        assertEquals(testBookList, biblioteca.getTotalBooks());
+        List<Item> testItemList = Arrays.asList(item);
+        biblioteca.addItemsToTheASeccion(testItemList , "books");
+        assertEquals(testItemList, biblioteca.getTotalItems());
     }
 
 
     @Test
     public void testReturnAvailableBooks() {
-        List<Book> expectedOnlyAvailable = Arrays.asList(availableBook);
-        biblioteca.addBooksToTheBiblioteca(allBooks);
-        assertEquals(expectedOnlyAvailable, biblioteca.getBooksThatAreAvailable(true));
+        List<Item> expectedOnlyAvailable = Arrays.asList(availableItem);
+        biblioteca.addItemsToTheASeccion(allItems, "books");
+        assertEquals(expectedOnlyAvailable, biblioteca.getItemsThatAreAvailable(true));
     }
 
     @Test
     public void testReturnNotAvailableBooks() {
-        List<Book> expectedNotAvailable = Arrays.asList(unavailableBook);
-        biblioteca.addBooksToTheBiblioteca(allBooks);
-        assertEquals(expectedNotAvailable, biblioteca.getBooksThatAreAvailable(false));
+        List<Item> expectedNotAvailable = Arrays.asList(unavailableItem);
+        biblioteca.addItemsToTheASeccion(allItems, "books");
+        assertEquals(expectedNotAvailable, biblioteca.getItemsThatAreAvailable(false));
     }
 
 

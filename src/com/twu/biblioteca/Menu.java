@@ -6,10 +6,9 @@ import java.util.Scanner;
 
 public class Menu {
 
-    int userInput;
     private List<String> mainMenu = Arrays.asList("List of Books", "List of Movies", "Quit");
-    private List<String> booksMenu = Arrays.asList("Borrow a book", "Return a book", "Go back");
     Biblioteca biblioteca = new Biblioteca();
+    public int userInput;
 
     public void displayWelcome() {
         String welcomeMessage = "Welcome to: " + biblioteca.bibliotecaName;
@@ -54,9 +53,6 @@ public class Menu {
         doSelectMainMenuOption();
     }
 
-    public List<String> getBooksMenu() {
-        return booksMenu;
-    }
 
     public List<String> getMainMenu() {
         return mainMenu;
