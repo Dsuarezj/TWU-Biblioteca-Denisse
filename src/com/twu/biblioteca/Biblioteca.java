@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Biblioteca {
 
-    String bibliotecaName = "Bangalore Public Library";
+    final String bibliotecaName = "Bangalore Public Library";
     static List<Item> totalBooks = new ArrayList();
     static List<Item> totalMovies = new ArrayList();
 
@@ -16,6 +16,10 @@ public class Biblioteca {
         System.out.println("The following articles are aviable:");
     }
 
+    public enum ItemType {
+        BOOK, MOVIE
+    }
+
     public void displayItemList(List<Item> listOfItems) {
         System.out.println();
         int numberOfBooks = listOfItems.size();
@@ -24,42 +28,46 @@ public class Biblioteca {
         }
     }
 
-    public void addItemsToTheASeccion(List<Item> items, String section) {
+    public void addItemsToTheASeccion(List<Item> items, ItemType section) {
         List<Item> itemFromASection = selectTotalListAccordingTheSection(section);
         for (Item item : items) {
             itemFromASection.add(item);
         }
     }
 
-    public List<Item> getTotalItems(String section) {
+    public List<Item> getTotalItems(ItemType section) {
         List<Item> itemFromASection = selectTotalListAccordingTheSection(section);
         return itemFromASection;
     }
 
-
-    public List<Item> getItemsThatAreAvailable(boolean askedState, String section) {
+    public List<Item> getItemsThatAreAvailable(ItemType section) {
         List<Item> askedItems = new ArrayList<>();
         List<Item> itemFromASection = selectTotalListAccordingTheSection(section);
         for (Item item : itemFromASection) {
-            if (askedState && item.isAvailable()) {
-                askedItems.add(item);
-            }
-            if (!askedState && !item.isAvailable()) {
+            if (item.isAvailable()) {
                 askedItems.add(item);
             }
         }
         return askedItems;
     }
 
+    public List<Item> getItemsThatAreNotAvailable(ItemType section) {
+        List<Item> askedItems = new ArrayList<>();
+        List<Item> itemFromASection = selectTotalListAccordingTheSection(section);
+        for (Item item : itemFromASection) {
+            if (!item.isAvailable()) {
+                askedItems.add(item);
+            }
+        }
+        return askedItems;
+    }
 
-    private List<Item> selectTotalListAccordingTheSection(String section) {
-        if (section == "books"){
+    private List<Item> selectTotalListAccordingTheSection(ItemType section) {
+        if (ItemType.MOVIE.equals(section)) {
+            return totalMovies;
+        } else {
             return totalBooks;
         }
-        else if (section == "movies"){
-            return totalMovies;
-        }
-        return  null;
     }
 
 

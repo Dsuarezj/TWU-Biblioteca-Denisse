@@ -19,6 +19,7 @@ public class LoginTest {
     @Test
     public void testIfMasterUserTryToAccessReturnTrue() {
         String masterUser = "000-0000";
+        //isRegistered
         boolean isMasterUser = login.isUserRegister(masterUser);
         assertEquals(true, isMasterUser);
 
