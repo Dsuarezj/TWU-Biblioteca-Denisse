@@ -17,8 +17,8 @@ public class BibliotecaLauncher {
 
         addListBooks();
         addListMovies();
-        biblioteca.addItemsToTheASeccion(listOfBooksToIngress, "books");
-        biblioteca.addItemsToTheASeccion(listOfMoviesToIngress, "movies");
+        biblioteca.addItemsToTheASeccion(listOfBooksToIngress, Biblioteca.ItemType.BOOK);
+        biblioteca.addItemsToTheASeccion(listOfMoviesToIngress, Biblioteca.ItemType.MOVIE);
         menu.displayWelcome();
         menu.displayMenu(menu.getMainMenu());
         menu.getUserInput();

@@ -10,7 +10,7 @@ public class BorrowReturnMenu {
 
     private List<String> borrowReturnMenu = Arrays.asList("Borrow", "Return", "Go back");
 
-    public void doItemListOption(String section) {
+    public void doItemListOption(Biblioteca.ItemType section) {
         while (menu.userInput != borrowReturnMenu.size()) {
             switch (menu.userInput) {
                 case 1:
@@ -29,10 +29,10 @@ public class BorrowReturnMenu {
         menu.callMainMenu();
     }
 
-    public void displayItemList(String section) {
+    public void displayItemList(Biblioteca.ItemType section) {
         Biblioteca biblioteca = new Biblioteca();
-        System.out.println("++++++++++ The following "+ section + "are available: ++++++++++");
-        final List<Item> booksThatAreAvailable = biblioteca.getItemsThatAreAvailable(true, section);
+        System.out.println("++++++++++ The following items are available: ++++++++++");
+        final List<Item> booksThatAreAvailable = biblioteca.getItemsThatAreAvailable(section);
         biblioteca.displayItemList(booksThatAreAvailable);
         menu.displayMenu(borrowReturnMenu);
         menu.getUserInput();
@@ -40,15 +40,15 @@ public class BorrowReturnMenu {
     }
 
 
-    private void borrowItem(String section) {
-        List<Item> availableItemList = biblioteca.getItemsThatAreAvailable(true, section);
+    private void borrowItem(Biblioteca.ItemType section) {
+        List<Item> availableItemList = biblioteca.getItemsThatAreAvailable(section);
         if (isListEmpty(availableItemList)) return;
         selectItemToChangeState(availableItemList, "borrow" ,false);
     }
 
-    private void returnAItem(String section) {
-        System.out.println("++++++++++ List of your borrow " + section + " ++++++++++ ");
-        List<Item> notAvailableItemList = biblioteca.getItemsThatAreAvailable(false, section);
+    private void returnAItem(Biblioteca.ItemType section) {
+        System.out.println("++++++++++ List of your borrow item ++++++++++ ");
+        List<Item> notAvailableItemList = biblioteca.getItemsThatAreNotAvailable(section);
 
         if (isListEmpty(notAvailableItemList)) return;
 

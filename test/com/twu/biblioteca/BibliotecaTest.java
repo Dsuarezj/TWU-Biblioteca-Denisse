@@ -49,42 +49,41 @@ public class BibliotecaTest {
         assertEquals("The following articles are aviable:\n", byteArrayOutputStream.toString());
     }
 
-
     @Test
     public void testAddBookToTheBiblioteca() {
         List<Item> testItemList = Arrays.asList(book);
-        biblioteca.addItemsToTheASeccion(testItemList , "books");
-        assertEquals(testItemList, biblioteca.getTotalItems("books"));
+        biblioteca.addItemsToTheASeccion(testItemList , Biblioteca.ItemType.BOOK );
+        assertEquals(testItemList, biblioteca.getTotalItems(Biblioteca.ItemType.BOOK));
     }
 
 
     @Test
     public void testReturnAvailableBooks() {
-        List<Item> expectedOnlyAvailable = Arrays.asList(availableItem);
-        biblioteca.addItemsToTheASeccion(allBooks, "books");
-        assertEquals(expectedOnlyAvailable, biblioteca.getItemsThatAreAvailable(true , "books"));
+        List<Item> expectedOnlyAvailable = Arrays.asList(book, availableItem);
+        biblioteca.addItemsToTheASeccion(allBooks, Biblioteca.ItemType.BOOK);
+        assertEquals(expectedOnlyAvailable, biblioteca.getItemsThatAreAvailable(Biblioteca.ItemType.BOOK));
     }
 
     @Test
     public void testReturnNotAvailableBooks() {
         List<Item> expectedNotAvailable = Arrays.asList(unavailableItem);
-        biblioteca.addItemsToTheASeccion(allBooks, "books");
-        assertEquals(expectedNotAvailable, biblioteca.getItemsThatAreAvailable(false, "books"));
+        biblioteca.addItemsToTheASeccion(allBooks, Biblioteca.ItemType.BOOK);
+        assertEquals(expectedNotAvailable, biblioteca.getItemsThatAreNotAvailable(Biblioteca.ItemType.BOOK));
     }
 
     @Test
     public void testAddMovieToTheBiblioteca() {
         List<Item> testItemList = Arrays.asList(movie);
-        biblioteca.addItemsToTheASeccion(testItemList , "movies");
-        assertEquals(testItemList, biblioteca.getTotalItems("movies"));
+        biblioteca.addItemsToTheASeccion(testItemList , Biblioteca.ItemType.MOVIE);
+        assertEquals(testItemList, biblioteca.getTotalItems(Biblioteca.ItemType.MOVIE));
     }
     @Test
     public void testAddMovieAndBookToTheBibliotecaAndOnlyGetMovieList() {
         List<Item> testBookList = Arrays.asList(book);
         List<Item> testMovieList = Arrays.asList(movie);
-        biblioteca.addItemsToTheASeccion(testBookList , "books");
-        biblioteca.addItemsToTheASeccion(testMovieList , "movies");
-        assertEquals(testMovieList, biblioteca.getTotalItems("movies"));
+        biblioteca.addItemsToTheASeccion(testBookList , Biblioteca.ItemType.BOOK);
+        biblioteca.addItemsToTheASeccion(testMovieList , Biblioteca.ItemType.MOVIE);
+        assertEquals(testMovieList, biblioteca.getTotalItems(Biblioteca.ItemType.MOVIE));
     }
 
 }

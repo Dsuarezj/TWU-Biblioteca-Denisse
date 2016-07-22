@@ -36,10 +36,10 @@ public class Menu {
 
             switch (userInput) {
                 case 1:
-                    borrowReturnMenu.displayItemList("books");
+                    borrowReturnMenu.displayItemList(Biblioteca.ItemType.BOOK);
                     return;
                 case 2:
-                    borrowReturnMenu.displayItemList("movies");
+                    borrowReturnMenu.displayItemList(Biblioteca.ItemType.MOVIE);
                     return;
                 default:
                     System.out.printf("You chose wrong, try again. Select the option number \n");
@@ -72,4 +72,7 @@ public class Menu {
     }
 
 
+    private String privateMethod() {
+        return "thing";
+    }
 }

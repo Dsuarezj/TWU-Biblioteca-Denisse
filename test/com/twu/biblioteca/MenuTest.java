@@ -61,4 +61,5 @@ public class MenuTest {
         assertEquals(expectedMainMenu, byteArrayOutputStream.toString());
     }
 
+
 }
