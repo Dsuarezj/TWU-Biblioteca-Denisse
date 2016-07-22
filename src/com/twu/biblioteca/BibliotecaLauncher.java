@@ -17,7 +17,7 @@ public class BibliotecaLauncher {
 
 
         prepareBiblioteca();
-
+        login.askForUserId();
         menu.displayWelcome();
         menu.displayMenu(menu.getMainMenu());
         menu.getInput();

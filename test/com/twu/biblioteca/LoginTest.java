@@ -1,7 +1,10 @@
 package com.twu.biblioteca;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class LoginTest {
     Login login = new Login ();
+    private ByteArrayOutputStream byteArrayOutputStream;
 
     List<String> masterUserInformation = Arrays.asList("000-0000", "master key", "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
     List<String> firstUserInformation = Arrays.asList("000-0001", "first key", "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
@@ -16,6 +20,12 @@ public class LoginTest {
 
     User masterUser = new User(masterUserInformation);
     User firstUser = new User(firstUserInformation);
+
+    @Before
+    public void setUp() {
+        byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+    }
 
     @Test
     public void testIfMasterUserTryToAccessReturnTrue() {
