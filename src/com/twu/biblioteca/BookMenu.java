@@ -39,48 +39,44 @@ public class BookMenu {
 
     private void borrowBook() {
         List<Book> availableBookList = biblioteca.getBooksThatAreAvailable(true);
-        if (availableBookList.size() == 0) {
-            System.out.println("There are not books available. Come back later!");
-            return;
-        }
-
-        System.out.println("Ingress the book ID that you want to borrow");
-        int userBookSelection = menu.getUserInput() - 1;
-
-        if (userBookSelection < 0 || userBookSelection > availableBookList.size()) {
-            System.out.println("We can't process that!");
-            return;
-        } else {
-            book = availableBookList.get(userBookSelection);
-            setStateOfABook(userBookSelection, availableBookList, false);
-            System.out.println("You borrow: " + book.getBookName() + ". Enjoy!");
-        }
+        if (isListEmpty(availableBookList)) return;
+        selectBookToChangeState(availableBookList, "return" ,false);
     }
 
     private void returnABook() {
         System.out.println("++++++++++ List of your borrow books ++++++++++ ");
         List<Book> notAvailableBookList = biblioteca.getBooksThatAreAvailable(false);
-        if (notAvailableBookList.size() == 0) {
-            System.out.println("You don't have any borrow books!");
-            return;
-        }
-        biblioteca.displayBookList(notAvailableBookList);
-        System.out.println("Ingress the book ID that you want to return");
-        int userBookSelection = menu.getUserInput() - 1;
 
-        if (userBookSelection < 0 || userBookSelection > notAvailableBookList.size()) {
-            System.out.println("We can't process that!");
-            return;
-        } else {
-            book = notAvailableBookList.get(userBookSelection);
-            setStateOfABook(userBookSelection, notAvailableBookList, true);
-            System.out.println("You return: " + book.getBookName() + ". Thanks!");
-//            biblioteca.displayBookList(biblioteca.getBooksThatAreAvailable());
-        }
+        if (isListEmpty(notAvailableBookList)) return;
+
+        biblioteca.displayBookList(notAvailableBookList);
+        selectBookToChangeState(notAvailableBookList, "borrow" ,true);
 
     }
 
-        private void setStateOfABook(int bookID, List<Book> listOfBooks, boolean state) {
+    private void selectBookToChangeState(List<Book> BookList, String action,boolean newState) {
+        System.out.println("Ingress the book ID that you want to " + action);
+        int userBookSelection = menu.getUserInput() - 1;
+
+        if (userBookSelection < 0 || userBookSelection > BookList.size()) {
+            System.out.println("We can't process that!");
+            return;
+        } else {
+            book = BookList.get(userBookSelection);
+            setStateOfABook(userBookSelection, BookList, newState);
+            System.out.println("You " + action + ": " + book.getBookName());
+        }
+    }
+
+    private boolean isListEmpty(List<Book> notAvailableBookList) {
+        if (notAvailableBookList.size() == 0) {
+            System.out.println("There list is empty! Come back later!");
+            return true;
+        }
+        return false;
+    }
+
+    private void setStateOfABook(int bookID, List<Book> listOfBooks, boolean state) {
             book = listOfBooks.get(bookID);
             book.setBookStateAvailable(state);
             listOfBooks.clear();
