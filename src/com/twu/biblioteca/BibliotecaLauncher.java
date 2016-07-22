@@ -1,11 +1,13 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BibliotecaLauncher {
 
-    static List<Book> listOfBookToIngress = new ArrayList<>();
+    static List<Item> listOfItemToIngres = new ArrayList<>();
+    static List<Item> listOfMoviesToIngress = new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -14,7 +16,7 @@ public class BibliotecaLauncher {
         Biblioteca biblioteca = new Biblioteca();
 
         addListBooks();
-        biblioteca.addBooksToTheBiblioteca(listOfBookToIngress);
+        biblioteca.addItemsToTheASeccion(listOfItemToIngres, "books");
         menu.displayWelcome();
         menu.displayMenu(menu.getMainMenu());
         menu.getUserInput();
@@ -23,13 +25,17 @@ public class BibliotecaLauncher {
 
     }
 
-    public static List<Book> addListBooks() {
-        Book book1 = new Book("Clockwork orange", "Anthony Burgess", 1962, true);
-        Book book2 = new Book("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, true);
-        listOfBookToIngress.add(book1);
-        listOfBookToIngress.add(book2);
-        return listOfBookToIngress;
+    public static List<Item> addListBooks() {
+        Item item1 = new Item("Clockwork orange", "Anthony Burgess", 1962, true);
+        Item item2 = new Item("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, true);
+        listOfItemToIngres = Arrays.asList(item1, item2);
+        return listOfItemToIngres;
     }
 
-
+    public static List<Item> addListMovies() {
+        Item movie1 = new Item("Adventure time season 1", "Pendleton Ward", 2010, true);
+        Item movie2 = new Item("V for Vendetta", "James McTeigue", 2006, true);
+        listOfMoviesToIngress = Arrays.asList(movie1, movie2);
+        return listOfMoviesToIngress;
+    }
 }
