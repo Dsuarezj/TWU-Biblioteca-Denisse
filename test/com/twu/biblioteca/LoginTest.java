@@ -12,30 +12,27 @@ public class LoginTest {
 
     List<String> masterUserInformation = Arrays.asList("000-0000", "master key", "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
     List<String> firstUserInformation = Arrays.asList("000-0001", "first key", "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
+    List<String> nonUserInformation = Arrays.asList("000-xxxx", "non key", "Non User", "non@biblioteca.com", "Bangalore", "123-123-123");
 
     User masterUser = new User(masterUserInformation);
     User firstUser = new User(firstUserInformation);
 
     @Test
     public void testIfMasterUserTryToAccessReturnTrue() {
-        String masterUser = "000-0000";
-        //isRegistered
-        boolean isMasterUser = login.isUserRegister(masterUser);
-        assertEquals(true, isMasterUser);
-
+        boolean isMasterUserRegistered = login.isRegistered(masterUser.getId());
+        assertEquals(true, isMasterUserRegistered);
     }
 
     @Test
     public void testIfANonRegisteredUserTryToAccessReturnFalse() {
         String nonUser = "non-user";
-        boolean isNonRegisteredUser = login.isUserRegister(nonUser);
+        boolean isNonRegisteredUser = login.isRegistered(nonUser);
         assertEquals(false, isNonRegisteredUser);
     }
 
     @Test
     public void testIfAnotherRegisterUserTryToAccessReturnTrue() {
-        String anotherRegisteredUser = "000-0001";
-        boolean isARegisteredUser = login.isUserRegister(anotherRegisteredUser);
+        boolean isARegisteredUser = login.isRegistered(firstUser.getId());
         assertEquals(true, isARegisteredUser);
     }
 

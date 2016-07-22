@@ -29,20 +29,20 @@ public class Biblioteca {
     }
 
     public void addItemsToTheASeccion(List<Item> items, ItemType section) {
-        List<Item> itemFromASection = selectTotalListAccordingTheSection(section);
+        List<Item> itemFromASection = selectTotalListThatAreIn(section);
         for (Item item : items) {
             itemFromASection.add(item);
         }
     }
 
     public List<Item> getTotalItems(ItemType section) {
-        List<Item> itemFromASection = selectTotalListAccordingTheSection(section);
+        List<Item> itemFromASection = selectTotalListThatAreIn(section);
         return itemFromASection;
     }
 
     public List<Item> getItemsThatAreAvailable(ItemType section) {
         List<Item> askedItems = new ArrayList<>();
-        List<Item> itemFromASection = selectTotalListAccordingTheSection(section);
+        List<Item> itemFromASection = selectTotalListThatAreIn(section);
         for (Item item : itemFromASection) {
             if (item.isAvailable()) {
                 askedItems.add(item);
@@ -53,7 +53,7 @@ public class Biblioteca {
 
     public List<Item> getItemsThatAreNotAvailable(ItemType section) {
         List<Item> askedItems = new ArrayList<>();
-        List<Item> itemFromASection = selectTotalListAccordingTheSection(section);
+        List<Item> itemFromASection = selectTotalListThatAreIn(section);
         for (Item item : itemFromASection) {
             if (!item.isAvailable()) {
                 askedItems.add(item);
@@ -62,16 +62,13 @@ public class Biblioteca {
         return askedItems;
     }
 
-    private List<Item> selectTotalListAccordingTheSection(ItemType section) {
+    private List<Item> selectTotalListThatAreIn(ItemType section) {
         if (ItemType.MOVIE.equals(section)) {
             return totalMovies;
         } else {
             return totalBooks;
         }
     }
-
-
-
     public void cleanUp() {
         listOfAvailableBooks.clear();
         totalBooks.clear();

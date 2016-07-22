@@ -13,18 +13,25 @@ public class BibliotecaLauncher {
     public static void main(String[] args) {
 
         Menu menu = new Menu();
-        Biblioteca biblioteca = new Biblioteca();
+        Login login = new Login();
 
+
+        prepareBiblioteca();
+
+        menu.displayWelcome();
+        menu.displayMenu(menu.getMainMenu());
+        menu.getInput();
+        menu.doSelectMainMenuOption();
+
+
+    }
+
+    private static void prepareBiblioteca() {
+        Biblioteca biblioteca = new Biblioteca();
         addListBooks();
         addListMovies();
         biblioteca.addItemsToTheASeccion(listOfBooksToIngress, Biblioteca.ItemType.BOOK);
         biblioteca.addItemsToTheASeccion(listOfMoviesToIngress, Biblioteca.ItemType.MOVIE);
-        menu.displayWelcome();
-        menu.displayMenu(menu.getMainMenu());
-        menu.getUserInput();
-        menu.doSelectMainMenuOption();
-
-
     }
 
     public static List<Item> addListBooks() {
@@ -40,4 +47,6 @@ public class BibliotecaLauncher {
         listOfMoviesToIngress = Arrays.asList(movie1, movie2);
         return listOfMoviesToIngress;
     }
+
+
 }
