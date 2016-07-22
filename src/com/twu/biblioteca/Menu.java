@@ -32,10 +32,14 @@ public class Menu {
 
     public void doSelectMainMenuOption() {
         while (userInput != mainMenu.size()) {
+            BorrowReturnMenu borrowReturnMenu = new BorrowReturnMenu();
+
             switch (userInput) {
                 case 1:
-                    BookMenu bookMenu = new BookMenu();
-                    bookMenu.doBookList();
+                    borrowReturnMenu.displayItemList("books");
+                    return;
+                case 2:
+                    borrowReturnMenu.displayItemList("movies");
                     return;
                 default:
                     System.out.printf("You chose wrong, try again. Select the option number \n");

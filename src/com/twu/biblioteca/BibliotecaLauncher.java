@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BibliotecaLauncher {
 
-    static List<Item> listOfItemToIngres = new ArrayList<>();
+    static List<Item> listOfBooksToIngress = new ArrayList<>();
     static List<Item> listOfMoviesToIngress = new ArrayList<>();
 
 
@@ -16,7 +16,9 @@ public class BibliotecaLauncher {
         Biblioteca biblioteca = new Biblioteca();
 
         addListBooks();
-        biblioteca.addItemsToTheASeccion(listOfItemToIngres, "books");
+        addListMovies();
+        biblioteca.addItemsToTheASeccion(listOfBooksToIngress, "books");
+        biblioteca.addItemsToTheASeccion(listOfMoviesToIngress, "movies");
         menu.displayWelcome();
         menu.displayMenu(menu.getMainMenu());
         menu.getUserInput();
@@ -28,8 +30,8 @@ public class BibliotecaLauncher {
     public static List<Item> addListBooks() {
         Item item1 = new Item("Clockwork orange", "Anthony Burgess", 1962, true);
         Item item2 = new Item("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, true);
-        listOfItemToIngres = Arrays.asList(item1, item2);
-        return listOfItemToIngres;
+        listOfBooksToIngress = Arrays.asList(item1, item2);
+        return listOfBooksToIngress;
     }
 
     public static List<Item> addListMovies() {

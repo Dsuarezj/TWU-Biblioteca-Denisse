@@ -8,7 +8,9 @@ public class Biblioteca {
     String bibliotecaName = "Bangalore Public Library";
     static List<Item> totalBooks = new ArrayList();
     static List<Item> totalMovies = new ArrayList();
-    static List<Item> listOfAvailableItems = new ArrayList();
+
+    static List<Item> listOfAvailableMovies = new ArrayList();
+    static List<Item> listOfAvailableBooks = new ArrayList();
 
     public void startBookNameList() {
         System.out.println("The following articles are aviable:");
@@ -22,20 +24,23 @@ public class Biblioteca {
         }
     }
 
-    public void addItemsToTheASeccion(List<Item> items, String seccion) {
+    public void addItemsToTheASeccion(List<Item> items, String section) {
+        List<Item> itemFromASection = selectTotalListAccordingTheSection(section);
         for (Item item : items) {
-            totalBooks.add(item);
+            itemFromASection.add(item);
         }
     }
 
-    public List<Item> getTotalItems() {
-        return totalBooks;
+    public List<Item> getTotalItems(String section) {
+        List<Item> itemFromASection = selectTotalListAccordingTheSection(section);
+        return itemFromASection;
     }
 
 
-    public List<Item> getItemsThatAreAvailable(boolean askedState) {
+    public List<Item> getItemsThatAreAvailable(boolean askedState, String section) {
         List<Item> askedItems = new ArrayList<>();
-        for (Item item : totalBooks) {
+        List<Item> itemFromASection = selectTotalListAccordingTheSection(section);
+        for (Item item : itemFromASection) {
             if (askedState && item.isAvailable()) {
                 askedItems.add(item);
             }
@@ -47,9 +52,23 @@ public class Biblioteca {
     }
 
 
+    private List<Item> selectTotalListAccordingTheSection(String section) {
+        if (section == "books"){
+            return totalBooks;
+        }
+        else if (section == "movies"){
+            return totalMovies;
+        }
+        return  null;
+    }
+
+
+
     public void cleanUp() {
-        listOfAvailableItems.clear();
+        listOfAvailableBooks.clear();
         totalBooks.clear();
+        listOfAvailableMovies.clear();
+        totalMovies.clear();
     }
 
 }
