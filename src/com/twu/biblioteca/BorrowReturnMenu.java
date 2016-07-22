@@ -23,7 +23,7 @@ public class BorrowReturnMenu {
                     return;
                 default:
                     System.out.printf("You chose wrong, try again. Select the option number \n");
-                    menu.readUserInput();
+                    menu.readInput();
             }
         }
         menu.callMainMenu();
@@ -35,7 +35,7 @@ public class BorrowReturnMenu {
         final List<Item> booksThatAreAvailable = biblioteca.getItemsThatAreAvailable(section);
         biblioteca.displayItemList(booksThatAreAvailable);
         menu.displayMenu(borrowReturnMenu);
-        menu.getUserInput();
+        menu.getInput();
         doItemListOption(section);
     }
 
@@ -59,9 +59,9 @@ public class BorrowReturnMenu {
 
     private void selectItemToChangeState(List<Item> itemList, String action, boolean newState) {
         System.out.println("Ingress the item ID that you want to " + action);
-        int userBookSelection = menu.getUserInput() - 1;
+        int userBookSelection = menu.getInput() - 1;
 
-        if (userBookSelection < 0 || userBookSelection > itemList.size()) {
+        if (userBookSelection < 0 || userBookSelection >= itemList.size()) {
             System.out.println("We can't process that!");
             return;
         } else {

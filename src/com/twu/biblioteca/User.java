@@ -59,4 +59,8 @@ public class User {
                 "address : " + this.address + "\n" +
                 "phone number: " + this.phoneNumber) + "\n";
     }
+
+    public String getId() {
+        return id;
+    }
 }

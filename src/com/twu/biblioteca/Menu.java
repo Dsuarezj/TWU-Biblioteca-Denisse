@@ -15,13 +15,13 @@ public class Menu {
         System.out.println(welcomeMessage);
     }
 
-    public void readUserInput() {
+    public void readInput() {
         Scanner input = new Scanner(System.in);
         userInput = input.nextInt();
     }
 
-    public int getUserInput() {
-        readUserInput();
+    public int getInput() {
+        readInput();
         return userInput;
     }
 
@@ -43,7 +43,7 @@ public class Menu {
                     return;
                 default:
                     System.out.printf("You chose wrong, try again. Select the option number \n");
-                    readUserInput();
+                    readInput();
             }
         }
 
@@ -53,7 +53,7 @@ public class Menu {
 
     public void callMainMenu() {
         displayMenu(getMainMenu());
-        getUserInput();
+        getInput();
         doSelectMainMenuOption();
     }
 
