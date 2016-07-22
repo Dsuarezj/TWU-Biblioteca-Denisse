@@ -23,10 +23,13 @@ public class BibliotecaTest {
 
     private boolean stateAvailable = true;
 
-    Item item = new Item(bookName, bookAuthor, bookYear, stateAvailable);
-    Item availableItem = new Item(bookName, bookAuthor, bookYear, true);
-    Item unavailableItem = new Item(bookName, bookAuthor, bookYear, false);
-    List<Item> allItems = Arrays.asList(availableItem, unavailableItem);
+    Item book = new Item(bookName, bookAuthor, bookYear, stateAvailable);
+    Item movie = new Item("Adventure time season 1", "Pendleton Ward", 2010, true);
+
+    Item availableItem = new Item("Available Item", bookAuthor, bookYear, true);
+    Item unavailableItem = new Item("Un Available Item", bookAuthor, bookYear, false);
+
+    List<Item> allBooks = Arrays.asList(book, availableItem, unavailableItem);
 
 
     @Before
@@ -49,25 +52,39 @@ public class BibliotecaTest {
 
     @Test
     public void testAddBookToTheBiblioteca() {
-        List<Item> testItemList = Arrays.asList(item);
+        List<Item> testItemList = Arrays.asList(book);
         biblioteca.addItemsToTheASeccion(testItemList , "books");
-        assertEquals(testItemList, biblioteca.getTotalItems());
+        assertEquals(testItemList, biblioteca.getTotalItems("books"));
     }
 
 
     @Test
     public void testReturnAvailableBooks() {
         List<Item> expectedOnlyAvailable = Arrays.asList(availableItem);
-        biblioteca.addItemsToTheASeccion(allItems, "books");
-        assertEquals(expectedOnlyAvailable, biblioteca.getItemsThatAreAvailable(true));
+        biblioteca.addItemsToTheASeccion(allBooks, "books");
+        assertEquals(expectedOnlyAvailable, biblioteca.getItemsThatAreAvailable(true , "books"));
     }
 
     @Test
     public void testReturnNotAvailableBooks() {
         List<Item> expectedNotAvailable = Arrays.asList(unavailableItem);
-        biblioteca.addItemsToTheASeccion(allItems, "books");
-        assertEquals(expectedNotAvailable, biblioteca.getItemsThatAreAvailable(false));
+        biblioteca.addItemsToTheASeccion(allBooks, "books");
+        assertEquals(expectedNotAvailable, biblioteca.getItemsThatAreAvailable(false, "books"));
     }
 
+    @Test
+    public void testAddMovieToTheBiblioteca() {
+        List<Item> testItemList = Arrays.asList(movie);
+        biblioteca.addItemsToTheASeccion(testItemList , "movies");
+        assertEquals(testItemList, biblioteca.getTotalItems("movies"));
+    }
+    @Test
+    public void testAddMovieAndBookToTheBibliotecaAndOnlyGetMovieList() {
+        List<Item> testBookList = Arrays.asList(book);
+        List<Item> testMovieList = Arrays.asList(movie);
+        biblioteca.addItemsToTheASeccion(testBookList , "books");
+        biblioteca.addItemsToTheASeccion(testMovieList , "movies");
+        assertEquals(testMovieList, biblioteca.getTotalItems("movies"));
+    }
 
 }
