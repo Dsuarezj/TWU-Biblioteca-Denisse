@@ -18,7 +18,7 @@ public class LoginTest {
     List<String> firstUserInformation = Arrays.asList("000-0001", "first key", "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
     List<String> nonUserInformation = Arrays.asList("000-xxxx", "non key", "Non User", "non@biblioteca.com", "Bangalore", "123-123-123");
 
-    User masterUser = new User(masterUserInformation);
+    User masterUserTest = new User(masterUserInformation);
     User firstUser = new User(firstUserInformation);
 
     @Before
@@ -29,7 +29,7 @@ public class LoginTest {
 
     @Test
     public void testIfMasterUserTryToAccessReturnTrue() {
-        boolean isMasterUserRegistered = login.isRegistered(masterUser.getId());
+        boolean isMasterUserRegistered = login.isRegistered(masterUserTest.getId());
         assertEquals(true, isMasterUserRegistered);
     }
 
@@ -47,7 +47,17 @@ public class LoginTest {
     }
 
     @Test
-    public void testIfMasterUserPassIsCorrect() {
+    public void testReturnMasterUserObjectUsingMasterId() {
+        login.isRegistered(masterUserTest.getId());
+        User requestUser = login.getUser();
+        assertEquals(masterUserTest, requestUser);
+    }
+
+    @Test
+    public void testShouldReturnTrueIfMasterUserLoginUsingMasterPass() {
+        login.isRegistered(masterUserTest.getId());
+        boolean isPasswordCorrect =  login.checkPassword(masterUserInformation.get(1));
+        assertEquals(true, isPasswordCorrect);
     }
 
 
