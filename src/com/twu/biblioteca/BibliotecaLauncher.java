@@ -17,14 +17,15 @@ public class BibliotecaLauncher {
 
 
         prepareBiblioteca();
-        login.askForUserId();
 
-        menu.displayWelcome();
-        menu.displayMenu(menu.getMainMenu());
-        menu.getInput();
-        menu.doSelectMainMenuOption();
+        if (login.isLoginSuccess()) {
+            menu.displayWelcome();
+            menu.displayMenu(menu.getMainMenu());
+            menu.getInput();
+            menu.doSelectMainMenuOption();
+        }
 
-
+        System.out.println("You isLoginSuccess information is not correct");
     }
 
     private static void prepareBiblioteca() {

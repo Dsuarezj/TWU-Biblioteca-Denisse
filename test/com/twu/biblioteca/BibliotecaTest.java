@@ -52,7 +52,7 @@ public class BibliotecaTest {
     @Test
     public void testAddBookToTheBiblioteca() {
         List<Item> testItemList = Arrays.asList(book);
-        biblioteca.addItemsToTheASeccion(testItemList , Biblioteca.ItemType.BOOK );
+        biblioteca.addItemsToTheASeccion(testItemList, Biblioteca.ItemType.BOOK);
         assertEquals(testItemList, biblioteca.getTotalItems(Biblioteca.ItemType.BOOK));
     }
 
@@ -74,15 +74,16 @@ public class BibliotecaTest {
     @Test
     public void testAddMovieToTheBiblioteca() {
         List<Item> testItemList = Arrays.asList(movie);
-        biblioteca.addItemsToTheASeccion(testItemList , Biblioteca.ItemType.MOVIE);
+        biblioteca.addItemsToTheASeccion(testItemList, Biblioteca.ItemType.MOVIE);
         assertEquals(testItemList, biblioteca.getTotalItems(Biblioteca.ItemType.MOVIE));
     }
+
     @Test
     public void testAddMovieAndBookToTheBibliotecaAndOnlyGetMovieList() {
         List<Item> testBookList = Arrays.asList(book);
         List<Item> testMovieList = Arrays.asList(movie);
-        biblioteca.addItemsToTheASeccion(testBookList , Biblioteca.ItemType.BOOK);
-        biblioteca.addItemsToTheASeccion(testMovieList , Biblioteca.ItemType.MOVIE);
+        biblioteca.addItemsToTheASeccion(testBookList, Biblioteca.ItemType.BOOK);
+        biblioteca.addItemsToTheASeccion(testMovieList, Biblioteca.ItemType.MOVIE);
         assertEquals(testMovieList, biblioteca.getTotalItems(Biblioteca.ItemType.MOVIE));
     }
 

@@ -42,8 +42,8 @@ public class MenuTest {
 
         menu.displayMenu(mainMenuItems);
         String expectedMainMenu = "++++++++++ Menu Option ++++++++++\n" +
-                                    "1. List of Books\t2. List of Movies\t3. Quit\t\n" +
-                                    "Select the option number\n";
+                "1. List of Books\t2. List of Movies\t3. Quit\t\n" +
+                "Select the option number\n";
 
         assertEquals(expectedMainMenu, byteArrayOutputStream.toString());
     }

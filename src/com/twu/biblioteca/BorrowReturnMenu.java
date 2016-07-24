@@ -43,7 +43,7 @@ public class BorrowReturnMenu {
     private void borrowItem(Biblioteca.ItemType section) {
         List<Item> availableItemList = biblioteca.getItemsThatAreAvailable(section);
         if (isListEmpty(availableItemList)) return;
-        selectItemToChangeState(availableItemList, "borrow" ,false);
+        selectItemToChangeState(availableItemList, "borrow", false);
     }
 
     private void returnAItem(Biblioteca.ItemType section) {
@@ -53,7 +53,7 @@ public class BorrowReturnMenu {
         if (isListEmpty(notAvailableItemList)) return;
 
         biblioteca.displayItemList(notAvailableItemList);
-        selectItemToChangeState(notAvailableItemList, "return" ,true);
+        selectItemToChangeState(notAvailableItemList, "return", true);
 
     }
 
@@ -80,10 +80,10 @@ public class BorrowReturnMenu {
     }
 
     private void setStateOfABook(int bookID, List<Item> listOfItems, boolean state) {
-            item = listOfItems.get(bookID);
-            item.setItemStateAvailable(state);
-            listOfItems.clear();
-        }
+        item = listOfItems.get(bookID);
+        item.setItemStateAvailable(state);
+        listOfItems.clear();
+    }
 
 
 }
