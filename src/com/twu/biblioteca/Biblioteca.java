@@ -69,6 +69,7 @@ public class Biblioteca {
             return totalBooks;
         }
     }
+
     public void cleanUp() {
         listOfAvailableBooks.clear();
         totalBooks.clear();

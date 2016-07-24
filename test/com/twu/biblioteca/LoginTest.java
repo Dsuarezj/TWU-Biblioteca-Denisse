@@ -11,12 +11,11 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class LoginTest {
-    Login login = new Login ();
+    Login login = new Login();
     private ByteArrayOutputStream byteArrayOutputStream;
 
     List<String> masterUserInformation = Arrays.asList("000-0000", "master key", "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
     List<String> firstUserInformation = Arrays.asList("000-0001", "first key", "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
-    List<String> nonUserInformation = Arrays.asList("000-xxxx", "non key", "Non User", "non@biblioteca.com", "Bangalore", "123-123-123");
 
     User masterUserTest = new User(masterUserInformation);
     User firstUser = new User(firstUserInformation);
@@ -29,7 +28,7 @@ public class LoginTest {
 
     @Test
     public void testIfMasterUserTryToAccessReturnTrue() {
-        boolean isMasterUserRegistered = login.isRegistered(masterUserTest.getId());
+        boolean isMasterUserRegistered = login.isRegistered("000-0000");
         assertEquals(true, isMasterUserRegistered);
     }
 
@@ -56,7 +55,7 @@ public class LoginTest {
     @Test
     public void testShouldReturnTrueIfMasterUserLoginUsingMasterPass() {
         login.isRegistered(masterUserTest.getId());
-        boolean isPasswordCorrect =  login.isPasswordCorrect(masterUserInformation.get(1));
+        boolean isPasswordCorrect = login.isPasswordCorrect(masterUserInformation.get(1));
         assertEquals(true, isPasswordCorrect);
     }
 
@@ -64,7 +63,7 @@ public class LoginTest {
     @Test
     public void testShouldReturnFalseIfMasterUserLoginUsingWrongPass() {
         login.isRegistered(masterUserTest.getId());
-        boolean isPasswordCorrect =  login.isPasswordCorrect("wrong pass");
+        boolean isPasswordCorrect = login.isPasswordCorrect("wrong pass");
         assertEquals(false, isPasswordCorrect);
     }
 
