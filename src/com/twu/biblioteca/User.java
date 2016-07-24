@@ -6,7 +6,7 @@ import java.util.List;
 public class User {
 
     private String id;
-    private String pass;
+    private String password;
     private String name;
     private String email;
     private String address;
@@ -16,7 +16,7 @@ public class User {
 
     public User(List<String> userInformation) {
         this.id = userInformation.get(0);
-        this.pass = userInformation.get(1);
+        this.password = userInformation.get(1);
         this.name = userInformation.get(2);
         this.email = userInformation.get(3);
         this.address = userInformation.get(4);
@@ -31,7 +31,7 @@ public class User {
         User user = (User) o;
 
         if (id != null ? !id.equals(user.id) : user.id != null) return false;
-        if (pass != null ? !pass.equals(user.pass) : user.pass != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (address != null ? !address.equals(user.address) : user.address != null) return false;
@@ -43,7 +43,7 @@ public class User {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (pass != null ? pass.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
@@ -62,5 +62,9 @@ public class User {
 
     public String getId() {
         return id;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

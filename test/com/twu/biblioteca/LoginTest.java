@@ -56,9 +56,16 @@ public class LoginTest {
     @Test
     public void testShouldReturnTrueIfMasterUserLoginUsingMasterPass() {
         login.isRegistered(masterUserTest.getId());
-        boolean isPasswordCorrect =  login.checkPassword(masterUserInformation.get(1));
+        boolean isPasswordCorrect =  login.isPasswordCorrect(masterUserInformation.get(1));
         assertEquals(true, isPasswordCorrect);
     }
 
+
+    @Test
+    public void testShouldReturnFalseIfMasterUserLoginUsingWrongPass() {
+        login.isRegistered(masterUserTest.getId());
+        boolean isPasswordCorrect =  login.isPasswordCorrect("wrong pass");
+        assertEquals(false, isPasswordCorrect);
+    }
 
 }
