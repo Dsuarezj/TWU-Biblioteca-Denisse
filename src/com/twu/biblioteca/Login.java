@@ -49,8 +49,10 @@ public class Login {
         return userLogin;
     }
 
-    public boolean checkPassword(String password) {
-        return true;
-
+    public boolean isPasswordCorrect(String password) {
+        String userPassword = userLogin.getPassword();
+        boolean isPasswordCorrect;
+        isPasswordCorrect = userPassword == password ? true : false;
+        return isPasswordCorrect;
     }
 }
