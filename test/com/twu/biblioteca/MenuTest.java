@@ -16,7 +16,6 @@ public class MenuTest {
 
     private ByteArrayOutputStream byteArrayOutputStream;
     private Menu menu = new Menu();
-    private Biblioteca biblioteca = new Biblioteca();
 
     @Before
     public void setUp() {
@@ -33,7 +32,7 @@ public class MenuTest {
     @Test
     public void testDisplayWelcomeMessageWithBibliotecaName() {
         menu.displayWelcome();
-        assertEquals("Welcome to: " + biblioteca.bibliotecaName + "\n", byteArrayOutputStream.toString());
+        assertEquals("Welcome to: Bangalore Public Library\n", byteArrayOutputStream.toString());
     }
 
     @Test

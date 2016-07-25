@@ -12,7 +12,6 @@ import static org.junit.Assert.assertEquals;
 
 public class LoginTest {
     Login login = new Login();
-    private ByteArrayOutputStream byteArrayOutputStream;
 
     List<String> masterUserInformation = Arrays.asList("000-0000", "master key", "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
     List<String> firstUserInformation = Arrays.asList("000-0001", "first key", "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
@@ -22,6 +21,7 @@ public class LoginTest {
 
     @Before
     public void setUp() {
+        ByteArrayOutputStream byteArrayOutputStream;
         byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
     }
