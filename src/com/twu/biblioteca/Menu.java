@@ -11,7 +11,8 @@ public class Menu {
     public int userInput;
 
     public void displayWelcome() {
-        String welcomeMessage = "Welcome to: " + biblioteca.bibliotecaName;
+        String bibliotecaName = "Bangalore Public Library";
+        String welcomeMessage = "Welcome to: " + bibliotecaName;
         System.out.println(welcomeMessage);
     }
 
@@ -69,10 +70,5 @@ public class Menu {
         System.out.println();
         System.out.println("Select the option number");
 
-    }
-
-
-    private String privateMethod() {
-        return "thing";
     }
 }

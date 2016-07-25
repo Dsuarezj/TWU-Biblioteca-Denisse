@@ -3,18 +3,11 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Biblioteca {
+class Biblioteca {
 
-    final String bibliotecaName = "Bangalore Public Library";
     static List<Item> totalBooks = new ArrayList();
     static List<Item> totalMovies = new ArrayList();
 
-    static List<Item> listOfAvailableMovies = new ArrayList();
-    static List<Item> listOfAvailableBooks = new ArrayList();
-
-    public void startBookNameList() {
-        System.out.println("The following articles are aviable:");
-    }
 
     public enum ItemType {
         BOOK, MOVIE
@@ -71,9 +64,7 @@ public class Biblioteca {
     }
 
     public void cleanUp() {
-        listOfAvailableBooks.clear();
         totalBooks.clear();
-        listOfAvailableMovies.clear();
         totalMovies.clear();
     }
 

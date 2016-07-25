@@ -24,9 +24,5 @@ public class UserTest {
     public void testUserAreNotEqualWhenTheIDIsDifferent() {
         assertNotEquals(masterUser, firstUser);
     }
-
-    @Test
-    public void testGetPasswordUsingUserID() {
-
-    }
+    
 }
