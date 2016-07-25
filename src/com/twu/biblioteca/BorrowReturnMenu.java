@@ -3,15 +3,16 @@ package com.twu.biblioteca;
 import java.util.Arrays;
 import java.util.List;
 
-public class BorrowReturnMenu {
-    Menu menu = new Menu();
+class BorrowReturnMenu {
+
     Biblioteca biblioteca = new Biblioteca();
-    Item item;
+    private Menu menu = new Menu();
+    private Item item;
 
     private List<String> borrowReturnMenu = Arrays.asList("Borrow", "Return", "Go back");
 
-    public void doItemListOption(Biblioteca.ItemType section) {
-        while (menu.userInput != borrowReturnMenu.size()) {
+    private void doItemListOption(Biblioteca.ItemType section) {
+        while (borrowReturnMenu.size() != menu.userInput) {
             switch (menu.userInput) {
                 case 1:
                     borrowItem(section);
@@ -29,7 +30,7 @@ public class BorrowReturnMenu {
         menu.callMainMenu();
     }
 
-    public void displayItemList(Biblioteca.ItemType section) {
+    void displayItemList(Biblioteca.ItemType section) {
         Biblioteca biblioteca = new Biblioteca();
         System.out.println("++++++++++ The following items are available: ++++++++++");
         final List<Item> booksThatAreAvailable = biblioteca.getItemsThatAreAvailable(section);
@@ -63,7 +64,6 @@ public class BorrowReturnMenu {
 
         if (userBookSelection < 0 || userBookSelection >= itemList.size()) {
             System.out.println("We can't process that!");
-            return;
         } else {
             item = itemList.get(userBookSelection);
             setStateOfABook(userBookSelection, itemList, newState);

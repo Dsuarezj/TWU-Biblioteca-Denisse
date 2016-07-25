@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public class Item {
+class Item {
 
     private String name;
     private String author;
@@ -8,22 +8,22 @@ public class Item {
     private boolean stateAvailable;
 
 
-    public Item(String name, String author, int publishYear, boolean stateAvailable) {
+    Item(String name, String author, int publishYear, boolean stateAvailable) {
         this.name = name;
         this.author = author;
         this.publishYear = publishYear;
         this.stateAvailable = stateAvailable;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public boolean isAvailable() {
+    boolean isAvailable() {
         return stateAvailable;
     }
 
-    public void setItemStateAvailable(boolean state) {
+    void setItemStateAvailable(boolean state) {
         stateAvailable = state;
     }
 

@@ -11,13 +11,13 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class LoginTest {
-    Login login = new Login();
+    private Login login = new Login();
 
-    List<String> masterUserInformation = Arrays.asList("000-0000", "master key", "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
-    List<String> firstUserInformation = Arrays.asList("000-0001", "first key", "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
+    private List<String> masterUserInformation = Arrays.asList("000-0000", "master key", "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
+    private List<String> firstUserInformation = Arrays.asList("000-0001", "first key", "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
 
-    User masterUserTest = new User(masterUserInformation);
-    User firstUser = new User(firstUserInformation);
+    private User masterUserTest = new User(masterUserInformation);
+    private User firstUser = new User(firstUserInformation);
 
     @Before
     public void setUp() {
