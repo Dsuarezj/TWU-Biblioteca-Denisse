@@ -4,12 +4,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class Login {
-    List<String> masterUserInformation = Arrays.asList("000-0000", "master key", "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
-    List<String> firstUserInformation = Arrays.asList("000-0001", "first key", "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
+class Login {
+    private List<String> masterUserInformation = Arrays.asList("000-0000", "master key", "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
+    private List<String> firstUserInformation = Arrays.asList("000-0001", "first key", "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
 
-    User masterUser = new User(masterUserInformation);
-    User firstUser = new User(firstUserInformation);
+    private User masterUser = new User(masterUserInformation);
+    private User firstUser = new User(firstUserInformation);
 
     private List<User> allUsersRegistered = Arrays.asList(masterUser, firstUser);
 
@@ -18,10 +18,10 @@ public class Login {
     private boolean access;
 
 
-    public boolean isRegistered(String testUser) {
+    boolean isRegistered(String testUser) {
 
         for (User user : allUsersRegistered) {
-            if (testUser.equals(user.getId().toString())) {
+            if (testUser.equals(user.getId())) {
                 userLogin = user;
                 return true;
             }
@@ -29,19 +29,19 @@ public class Login {
         return false;
     }
 
-    public boolean isLoginSuccess() {
+    boolean isLoginSuccess() {
         askForUserID();
         return access;
     }
 
-    public boolean isPasswordCorrect(String password) {
+    boolean isPasswordCorrect(String password) {
         String userPassword = userLogin.getPassword();
         boolean isPasswordCorrect;
-        isPasswordCorrect = userPassword.equals(password) ? true : false;
+        isPasswordCorrect = userPassword.equals(password);
         return isPasswordCorrect;
     }
 
-    public User getUser() {
+    User getUser() {
         return userLogin;
     }
 
@@ -51,9 +51,7 @@ public class Login {
         boolean isUserCorrect = isRegistered(userLoginInput);
         if (isUserCorrect) {
             access = askPassword();
-            return;
-        }
-        System.out.println("User Incorect");
+        } else System.out.println("User Incorect");
     }
 
     private boolean askPassword() {

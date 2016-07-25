@@ -5,15 +5,15 @@ import java.util.List;
 
 class Biblioteca {
 
-    static List<Item> totalBooks = new ArrayList();
-    static List<Item> totalMovies = new ArrayList();
+    private static List<Item> totalBooks = new ArrayList();
+    private static List<Item> totalMovies = new ArrayList();
 
 
-    public enum ItemType {
+    enum ItemType {
         BOOK, MOVIE
     }
 
-    public void displayItemList(List<Item> listOfItems) {
+    void displayItemList(List<Item> listOfItems) {
         System.out.println();
         int numberOfBooks = listOfItems.size();
         for (int i = 0; i < numberOfBooks; i++) {
@@ -21,19 +21,18 @@ class Biblioteca {
         }
     }
 
-    public void addItemsToTheASeccion(List<Item> items, ItemType section) {
+    void addItemsToTheASeccion(List<Item> items, ItemType section) {
         List<Item> itemFromASection = selectTotalListThatAreIn(section);
         for (Item item : items) {
             itemFromASection.add(item);
         }
     }
 
-    public List<Item> getTotalItems(ItemType section) {
-        List<Item> itemFromASection = selectTotalListThatAreIn(section);
-        return itemFromASection;
+    List<Item> getTotalItems(ItemType section) {
+        return selectTotalListThatAreIn(section);
     }
 
-    public List<Item> getItemsThatAreAvailable(ItemType section) {
+    List<Item> getItemsThatAreAvailable(ItemType section) {
         List<Item> askedItems = new ArrayList<>();
         List<Item> itemFromASection = selectTotalListThatAreIn(section);
         for (Item item : itemFromASection) {
@@ -44,7 +43,7 @@ class Biblioteca {
         return askedItems;
     }
 
-    public List<Item> getItemsThatAreNotAvailable(ItemType section) {
+    List<Item> getItemsThatAreNotAvailable(ItemType section) {
         List<Item> askedItems = new ArrayList<>();
         List<Item> itemFromASection = selectTotalListThatAreIn(section);
         for (Item item : itemFromASection) {
@@ -63,7 +62,7 @@ class Biblioteca {
         }
     }
 
-    public void cleanUp() {
+    void cleanUp() {
         totalBooks.clear();
         totalMovies.clear();
     }

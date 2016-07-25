@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -12,7 +12,7 @@ public class User {
     private String address;
     private String phoneNumber;
 
-    List<String> masterUser = Arrays.asList("000-0000", "master key", "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
+    private List<String> masterUser = new ArrayList<>();
 
     public User(List<String> userInformation) {
         this.id = userInformation.get(0);
@@ -60,11 +60,11 @@ public class User {
                 "phone number: " + this.phoneNumber) + "\n";
     }
 
-    public String getId() {
+    String getId() {
         return id;
     }
 
-    public String getPassword() {
+    String getPassword() {
         return password;
     }
 }
