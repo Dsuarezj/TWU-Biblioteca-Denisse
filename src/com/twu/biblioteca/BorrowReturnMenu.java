@@ -25,6 +25,7 @@ class BorrowReturnMenu {
                 default:
                     System.out.printf("You chose wrong, try again. Select the option number \n");
                     menu.readInput();
+                    break;
             }
         }
         menu.callMainMenu();
