@@ -8,11 +8,11 @@ class Biblioteca {
     private static List<Item> totalBooks = new ArrayList();
     private static List<Item> totalMovies = new ArrayList();
 
-    protected enum itemsSection {
+    protected enum section {
         BOOK, MOVIE
     }
 
-    public void addItemsToASection(List<Item> items, itemsSection section) {
+    public void addItemsToASection(List<Item> items, section section) {
         List<Item> itemListOfASection = selectTotalListFrom(section);
         for (Item item : items) {
             itemListOfASection.add(item);
@@ -27,11 +27,11 @@ class Biblioteca {
         }
     }
 
-    public List<Item> getTotalItems(itemsSection section) {
+    public List<Item> getTotalItems(section section) {
         return selectTotalListFrom(section);
     }
 
-    public List<Item> getItemsThatAreAvailable(itemsSection section) {
+    public List<Item> getItemsThatAreAvailable(section section) {
         List<Item> askedItems = new ArrayList<>();
         List<Item> itemFromASection = selectTotalListFrom(section);
         for (Item item : itemFromASection) {
@@ -42,7 +42,7 @@ class Biblioteca {
         return askedItems;
     }
 
-    public List<Item> getItemsThatAreNotAvailable(itemsSection section) {
+    public List<Item> getItemsThatAreNotAvailable(section section) {
         List<Item> askedItems = new ArrayList<>();
         List<Item> itemFromASection = selectTotalListFrom(section);
         for (Item item : itemFromASection) {
@@ -53,8 +53,8 @@ class Biblioteca {
         return askedItems;
     }
 
-    private List<Item> selectTotalListFrom(itemsSection section) {
-        if (itemsSection.MOVIE.equals(section)) {
+    private List<Item> selectTotalListFrom(section section) {
+        if (Biblioteca.section.MOVIE.equals(section)) {
             return totalMovies;
         } else {
             return totalBooks;
