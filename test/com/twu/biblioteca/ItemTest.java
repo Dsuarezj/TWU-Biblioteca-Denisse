@@ -1,8 +1,10 @@
 package com.twu.biblioteca;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+
 public class ItemTest {
 
     private Item item1 = new Item("Clockwork orange", "Anthony Burgess", 1962, true);
@@ -11,6 +13,7 @@ public class ItemTest {
     @Test
     public void testItemAreEqualWhenTheInformationIsTheSame() {
         Item expectedItem = new Item("Clockwork orange", "Anthony Burgess", 1962, true);
+
         assertEquals(expectedItem, item1);
     }
 

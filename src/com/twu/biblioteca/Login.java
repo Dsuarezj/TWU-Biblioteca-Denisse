@@ -16,12 +16,12 @@ class Login {
     private boolean access;
 
 
-    boolean isLoginSuccess() {
+    public boolean isLoginSuccess() {
         askForUserID();
         return access;
     }
 
-    boolean isRegistered(String testUser) {
+    public boolean isRegistered(String testUser) {
 
         for (User user : allUsersRegistered) {
             if (testUser.equals(user.getId())) {
@@ -32,14 +32,14 @@ class Login {
         return false;
     }
 
-    boolean isPasswordCorrect(String password) {
+    public boolean isPasswordCorrect(String password) {
         String userPassword = userLogin.getPassword();
         boolean isPasswordCorrect;
         isPasswordCorrect = userPassword.equals(password);
         return isPasswordCorrect;
     }
 
-    User getUser() {
+    public User getUser() {
         return userLogin;
     }
 

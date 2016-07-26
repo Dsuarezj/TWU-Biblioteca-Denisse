@@ -11,6 +11,16 @@ class BorrowReturnMenu {
 
     private List<String> borrowReturnMenu = Arrays.asList("Borrow", "Return", "Go back");
 
+    public void displayItemList(Biblioteca.section section) {
+        Biblioteca biblioteca = new Biblioteca();
+        System.out.println("++++++++++ The following items are available: ++++++++++");
+        final List<Item> booksThatAreAvailable = biblioteca.getItemsThatAreAvailable(section);
+        biblioteca.displayItemList(booksThatAreAvailable);
+        menu.displayMenu(borrowReturnMenu);
+        menu.getInput();
+        selectAction(section);
+    }
+
     private void selectAction(Biblioteca.section section) {
         while (borrowReturnMenu.size() != menu.userInput) {
             switch (menu.userInput) {
@@ -30,17 +40,6 @@ class BorrowReturnMenu {
         }
         menu.callMainMenu();
     }
-
-    void displayItemList(Biblioteca.section section) {
-        Biblioteca biblioteca = new Biblioteca();
-        System.out.println("++++++++++ The following items are available: ++++++++++");
-        final List<Item> booksThatAreAvailable = biblioteca.getItemsThatAreAvailable(section);
-        biblioteca.displayItemList(booksThatAreAvailable);
-        menu.displayMenu(borrowReturnMenu);
-        menu.getInput();
-        selectAction(section);
-    }
-
 
     private void borrowItem(Biblioteca.section section) {
         List<Item> availableItemList = biblioteca.getItemsThatAreAvailable(section);

@@ -7,22 +7,22 @@ class Item {
     private int publishYear;
     private boolean stateAvailable;
 
-    Item(String name, String author, int publishYear, boolean stateAvailable) {
+    public Item(String name, String author, int publishYear, boolean stateAvailable) {
         this.name = name;
         this.author = author;
         this.publishYear = publishYear;
         this.stateAvailable = stateAvailable;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    boolean isAvailable() {
+    public boolean isAvailable() {
         return stateAvailable;
     }
 
-    void setItemStateAvailable(boolean state) {
+    public void setItemStateAvailable(boolean state) {
         stateAvailable = state;
     }
 
