@@ -8,12 +8,18 @@ class Biblioteca {
     private static List<Item> totalBooks = new ArrayList();
     private static List<Item> totalMovies = new ArrayList();
 
-
-    enum ItemType {
+    protected enum itemsSection {
         BOOK, MOVIE
     }
 
-    void displayItemList(List<Item> listOfItems) {
+    public void addItemsToASection(List<Item> items, itemsSection section) {
+        List<Item> itemListOfASection = selectTotalListFrom(section);
+        for (Item item : items) {
+            itemListOfASection.add(item);
+        }
+    }
+
+    public void displayItemList(List<Item> listOfItems) {
         System.out.println();
         int numberOfBooks = listOfItems.size();
         for (int i = 0; i < numberOfBooks; i++) {
@@ -21,20 +27,13 @@ class Biblioteca {
         }
     }
 
-    void addItemsToTheASeccion(List<Item> items, ItemType section) {
-        List<Item> itemFromASection = selectTotalListThatAreIn(section);
-        for (Item item : items) {
-            itemFromASection.add(item);
-        }
+    public List<Item> getTotalItems(itemsSection section) {
+        return selectTotalListFrom(section);
     }
 
-    List<Item> getTotalItems(ItemType section) {
-        return selectTotalListThatAreIn(section);
-    }
-
-    List<Item> getItemsThatAreAvailable(ItemType section) {
+    public List<Item> getItemsThatAreAvailable(itemsSection section) {
         List<Item> askedItems = new ArrayList<>();
-        List<Item> itemFromASection = selectTotalListThatAreIn(section);
+        List<Item> itemFromASection = selectTotalListFrom(section);
         for (Item item : itemFromASection) {
             if (item.isAvailable()) {
                 askedItems.add(item);
@@ -43,9 +42,9 @@ class Biblioteca {
         return askedItems;
     }
 
-    List<Item> getItemsThatAreNotAvailable(ItemType section) {
+    public List<Item> getItemsThatAreNotAvailable(itemsSection section) {
         List<Item> askedItems = new ArrayList<>();
-        List<Item> itemFromASection = selectTotalListThatAreIn(section);
+        List<Item> itemFromASection = selectTotalListFrom(section);
         for (Item item : itemFromASection) {
             if (!item.isAvailable()) {
                 askedItems.add(item);
@@ -54,15 +53,17 @@ class Biblioteca {
         return askedItems;
     }
 
-    private List<Item> selectTotalListThatAreIn(ItemType section) {
-        if (ItemType.MOVIE.equals(section)) {
+    private List<Item> selectTotalListFrom(itemsSection section) {
+        if (itemsSection.MOVIE.equals(section)) {
             return totalMovies;
         } else {
             return totalBooks;
         }
     }
 
-    void cleanUp() {
+
+
+    public void cleanUp() {
         totalBooks.clear();
         totalMovies.clear();
     }
