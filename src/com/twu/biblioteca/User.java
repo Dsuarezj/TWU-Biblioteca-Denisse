@@ -14,13 +14,13 @@ public class User {
 
     private List<String> masterUser = new ArrayList<>();
 
-    public User(List<String> userInformation) {
-        this.id = userInformation.get(0);
-        this.password = userInformation.get(1);
-        this.name = userInformation.get(2);
-        this.email = userInformation.get(3);
-        this.address = userInformation.get(4);
-        this.phoneNumber = userInformation.get(5);
+    public User(String id, String password, String name, String email, String address, String phoneNumber) {
+        this.id = id;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
     }
 
     @Override

@@ -16,8 +16,8 @@ public class LoginTest {
     private List<String> masterUserInformation = Arrays.asList("000-0000", "master key", "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
     private List<String> firstUserInformation = Arrays.asList("000-0001", "first key", "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
 
-    private User masterUserTest = new User(masterUserInformation);
-    private User firstUser = new User(firstUserInformation);
+    private User masterUserTest = new User("000-0000", "master key", "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
+    private User firstUser = new User("000-0001", "first key", "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
 
     @Before
     public void setUp() {
