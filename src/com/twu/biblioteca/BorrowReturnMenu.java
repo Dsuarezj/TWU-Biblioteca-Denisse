@@ -11,7 +11,7 @@ class BorrowReturnMenu {
 
     private List<String> borrowReturnMenu = Arrays.asList("Borrow", "Return", "Go back");
 
-    private void doItemListOption(Biblioteca.section section) {
+    private void selectAction(Biblioteca.section section) {
         while (borrowReturnMenu.size() != menu.userInput) {
             switch (menu.userInput) {
                 case 1:
@@ -38,14 +38,14 @@ class BorrowReturnMenu {
         biblioteca.displayItemList(booksThatAreAvailable);
         menu.displayMenu(borrowReturnMenu);
         menu.getInput();
-        doItemListOption(section);
+        selectAction(section);
     }
 
 
     private void borrowItem(Biblioteca.section section) {
         List<Item> availableItemList = biblioteca.getItemsThatAreAvailable(section);
         if (isListEmpty(availableItemList)) return;
-        selectItemToChangeState(availableItemList, "borrow", false);
+        changeAvailableStatus(availableItemList, "borrow", false);
     }
 
     private void returnAItem(Biblioteca.section section) {
@@ -55,11 +55,11 @@ class BorrowReturnMenu {
         if (isListEmpty(notAvailableItemList)) return;
 
         biblioteca.displayItemList(notAvailableItemList);
-        selectItemToChangeState(notAvailableItemList, "return", true);
+        changeAvailableStatus(notAvailableItemList, "return", true);
 
     }
 
-    private void selectItemToChangeState(List<Item> itemList, String action, boolean newState) {
+    private void changeAvailableStatus(List<Item> itemList, String action, boolean availableStatus) {
         System.out.println("Ingress the item ID that you want to " + action);
         int userBookSelection = menu.getInput() - 1;
 
@@ -67,7 +67,7 @@ class BorrowReturnMenu {
             System.out.println("We can't process that!");
         } else {
             item = itemList.get(userBookSelection);
-            setStateOfABook(userBookSelection, itemList, newState);
+            setStateOfABook(userBookSelection, itemList, availableStatus);
             System.out.println("You " + action + ": " + item.getName());
         }
     }
