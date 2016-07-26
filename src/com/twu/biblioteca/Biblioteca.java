@@ -62,7 +62,6 @@ class Biblioteca {
     }
 
 
-
     public void cleanUp() {
         totalBooks.clear();
         totalMovies.clear();
