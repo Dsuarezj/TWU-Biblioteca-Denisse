@@ -17,7 +17,7 @@ public class UserTest {
 
     @Test
     public void testUserAreEqualWhenTheInformationIsTheSame() {
-        assertEquals(masterUser, new User(masterUserInformation));
+        assertEquals(new User(masterUserInformation), masterUser);
     }
 
     @Test

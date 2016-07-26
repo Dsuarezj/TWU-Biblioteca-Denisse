@@ -49,7 +49,7 @@ class Item {
         result = 31 * result + (stateAvailable ? 1 : 0);
         return result;
     }
-    
+
     @Override
     public String toString() {
         return ("Item Name: " + this.name + "\n" +
