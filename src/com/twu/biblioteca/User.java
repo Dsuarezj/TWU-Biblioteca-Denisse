@@ -23,6 +23,14 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,11 +68,5 @@ public class User {
                 "phone number: " + this.phoneNumber) + "\n";
     }
 
-    String getId() {
-        return id;
-    }
 
-    String getPassword() {
-        return password;
-    }
 }

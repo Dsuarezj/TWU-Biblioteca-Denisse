@@ -7,31 +7,30 @@ import java.util.Scanner;
 class Menu {
 
     private List<String> mainMenu = Arrays.asList("List of Books", "List of Movies", "Quit");
-    Biblioteca biblioteca = new Biblioteca();
     int userInput;
 
-    void displayWelcome() {
+    public void displayWelcome() {
         String bibliotecaName = "Bangalore Public Library";
         String welcomeMessage = "Welcome to: " + bibliotecaName;
         System.out.println(welcomeMessage);
     }
 
-    void readInput() {
+    public void readInput() {
         Scanner input = new Scanner(System.in);
         userInput = input.nextInt();
     }
 
-    int getInput() {
+    public int getInput() {
         readInput();
         return userInput;
     }
 
-    void displayMenu(List<String> menuItems) {
+    public void displayMenu(List<String> menuItems) {
         System.out.println("++++++++++ Menu Option ++++++++++");
         displayAListOfItems(menuItems);
     }
 
-    void selectMainMenuOption() {
+    public void selectMainMenuOption() {
         while (userInput != mainMenu.size()) {
             BorrowReturnMenu borrowReturnMenu = new BorrowReturnMenu();
 
@@ -52,14 +51,14 @@ class Menu {
         System.exit(0);
     }
 
-    void callMainMenu() {
+    public void callMainMenu() {
         displayMenu(getMainMenu());
         getInput();
         selectMainMenuOption();
     }
 
 
-    List<String> getMainMenu() {
+    public List<String> getMainMenu() {
         return mainMenu;
     }
 
