@@ -31,16 +31,16 @@ class Menu {
         buildAListOfItems(menuItems);
     }
 
-    void doSelectMainMenuOption() {
+    void selectMainMenuOption() {
         while (userInput != mainMenu.size()) {
             BorrowReturnMenu borrowReturnMenu = new BorrowReturnMenu();
 
             switch (userInput) {
                 case 1:
-                    borrowReturnMenu.displayItemList(Biblioteca.ItemType.BOOK);
+                    borrowReturnMenu.displayItemList(Biblioteca.itemsSection.BOOK);
                     return;
                 case 2:
-                    borrowReturnMenu.displayItemList(Biblioteca.ItemType.MOVIE);
+                    borrowReturnMenu.displayItemList(Biblioteca.itemsSection.MOVIE);
                     return;
                 default:
                     System.out.printf("You chose wrong, try again. Select the option number \n");
@@ -55,7 +55,7 @@ class Menu {
     void callMainMenu() {
         displayMenu(getMainMenu());
         getInput();
-        doSelectMainMenuOption();
+        selectMainMenuOption();
     }
 
 

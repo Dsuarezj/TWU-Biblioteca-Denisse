@@ -6,8 +6,8 @@ import java.util.List;
 
 public class BibliotecaLauncher {
 
-    private static List<Item> listOfBooksToIngress = new ArrayList<>();
-    private static List<Item> listOfMoviesToIngress = new ArrayList<>();
+    private static List<Item> totalListOfBibliotecaBooks = new ArrayList<>();
+    private static List<Item> totalListOfBibliotecaMovies = new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -15,39 +15,39 @@ public class BibliotecaLauncher {
         Menu menu = new Menu();
         Login login = new Login();
 
-
         prepareBiblioteca();
 
         if (login.isLoginSuccess()) {
+            System.out.println("Your personal information is: \n" + login.getUser());
             menu.displayWelcome();
             menu.displayMenu(menu.getMainMenu());
             menu.getInput();
-            menu.doSelectMainMenuOption();
+            menu.selectMainMenuOption();
         }
 
-        System.out.println("You isLoginSuccess information is not correct");
+        System.out.println("You Login information is not correct");
     }
 
     private static void prepareBiblioteca() {
         Biblioteca biblioteca = new Biblioteca();
         addListBooks();
         addListMovies();
-        biblioteca.addItemsToTheASeccion(listOfBooksToIngress, Biblioteca.ItemType.BOOK);
-        biblioteca.addItemsToTheASeccion(listOfMoviesToIngress, Biblioteca.ItemType.MOVIE);
+        biblioteca.addItemsToASection(totalListOfBibliotecaBooks, Biblioteca.itemsSection.BOOK);
+        biblioteca.addItemsToASection(totalListOfBibliotecaMovies, Biblioteca.itemsSection.MOVIE);
     }
 
     private static List<Item> addListBooks() {
         Item item1 = new Item("Clockwork orange", "Anthony Burgess", 1962, true);
         Item item2 = new Item("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, true);
-        listOfBooksToIngress = Arrays.asList(item1, item2);
-        return listOfBooksToIngress;
+        totalListOfBibliotecaBooks = Arrays.asList(item1, item2);
+        return totalListOfBibliotecaBooks;
     }
 
     private static List<Item> addListMovies() {
         Item movie1 = new Item("Adventure time season 1", "Pendleton Ward", 2010, true);
         Item movie2 = new Item("V for Vendetta", "James McTeigue", 2006, true);
-        listOfMoviesToIngress = Arrays.asList(movie1, movie2);
-        return listOfMoviesToIngress;
+        totalListOfBibliotecaMovies = Arrays.asList(movie1, movie2);
+        return totalListOfBibliotecaMovies;
     }
 
 

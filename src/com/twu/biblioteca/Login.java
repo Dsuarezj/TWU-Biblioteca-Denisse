@@ -18,6 +18,11 @@ class Login {
     private boolean access;
 
 
+    boolean isLoginSuccess() {
+        askForUserID();
+        return access;
+    }
+
     boolean isRegistered(String testUser) {
 
         for (User user : allUsersRegistered) {
@@ -27,11 +32,6 @@ class Login {
             }
         }
         return false;
-    }
-
-    boolean isLoginSuccess() {
-        askForUserID();
-        return access;
     }
 
     boolean isPasswordCorrect(String password) {
@@ -46,7 +46,7 @@ class Login {
     }
 
     private void askForUserID() {
-        System.out.println("Ingress your user ID:");
+        System.out.println("Input your user ID:");
         String userLoginInput = getLoginInput();
         boolean isUserCorrect = isRegistered(userLoginInput);
         if (isUserCorrect) {
@@ -55,7 +55,7 @@ class Login {
     }
 
     private boolean askPassword() {
-        System.out.println("Ingress your password:");
+        System.out.println("Input your password:");
         String userPassword = getLoginInput();
         return isPasswordCorrect(userPassword);
     }
