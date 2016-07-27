@@ -42,9 +42,9 @@ public class BibliotecaTest {
     public void testAddBookToTheBiblioteca() {
         List<Item> testItemList = Collections.singletonList(book);
 
-        biblioteca.addItemsToASection(testItemList, Biblioteca.section.BOOK);
+        biblioteca.addItemsToASection(testItemList, Biblioteca.Section.BOOK);
 
-        assertEquals(testItemList, biblioteca.getTotalItems(Biblioteca.section.BOOK));
+        assertEquals(testItemList, biblioteca.getTotalItems(Biblioteca.Section.BOOK));
     }
 
 
@@ -52,27 +52,27 @@ public class BibliotecaTest {
     public void testReturnAvailableBooks() {
         List<Item> expectedOnlyAvailable = Arrays.asList(book, availableItem);
 
-        biblioteca.addItemsToASection(allBooks, Biblioteca.section.BOOK);
+        biblioteca.addItemsToASection(allBooks, Biblioteca.Section.BOOK);
 
-        assertEquals(expectedOnlyAvailable, biblioteca.getItemsThatAreAvailable(Biblioteca.section.BOOK));
+        assertEquals(expectedOnlyAvailable, biblioteca.getItemsThatAreAvailable(Biblioteca.Section.BOOK));
     }
 
     @Test
     public void testReturnNotAvailableBooks() {
         List<Item> expectedNotAvailable = Arrays.asList(unavailableItem);
 
-        biblioteca.addItemsToASection(allBooks, Biblioteca.section.BOOK);
+        biblioteca.addItemsToASection(allBooks, Biblioteca.Section.BOOK);
 
-        assertEquals(expectedNotAvailable, biblioteca.getItemsThatAreNotAvailable(Biblioteca.section.BOOK));
+        assertEquals(expectedNotAvailable, biblioteca.getItemsThatAreNotAvailable(Biblioteca.Section.BOOK));
     }
 
     @Test
     public void testAddMovieToTheBiblioteca() {
         List<Item> testItemList = Arrays.asList(movie);
 
-        biblioteca.addItemsToASection(testItemList, Biblioteca.section.MOVIE);
+        biblioteca.addItemsToASection(testItemList, Biblioteca.Section.MOVIE);
 
-        assertEquals(testItemList, biblioteca.getTotalItems(Biblioteca.section.MOVIE));
+        assertEquals(testItemList, biblioteca.getTotalItems(Biblioteca.Section.MOVIE));
     }
 
     @Test
@@ -80,10 +80,10 @@ public class BibliotecaTest {
         List<Item> testBookList = Arrays.asList(book);
         List<Item> testMovieList = Arrays.asList(movie);
 
-        biblioteca.addItemsToASection(testBookList, Biblioteca.section.BOOK);
-        biblioteca.addItemsToASection(testMovieList, Biblioteca.section.MOVIE);
+        biblioteca.addItemsToASection(testBookList, Biblioteca.Section.BOOK);
+        biblioteca.addItemsToASection(testMovieList, Biblioteca.Section.MOVIE);
 
-        assertEquals(testMovieList, biblioteca.getTotalItems(Biblioteca.section.MOVIE));
+        assertEquals(testMovieList, biblioteca.getTotalItems(Biblioteca.Section.MOVIE));
     }
 
 }
