@@ -11,8 +11,7 @@ class BorrowReturnMenu {
 
     private List<String> borrowReturnMenu = Arrays.asList("Borrow", "Return", "Go back");
 
-    public void displayItemList(Biblioteca.section section) {
-        Biblioteca biblioteca = new Biblioteca();
+    public void displayItemList(Biblioteca.Section section) {
         System.out.println("++++++++++ The following items are available: ++++++++++");
         final List<Item> booksThatAreAvailable = biblioteca.getItemsThatAreAvailable(section);
         biblioteca.displayItemList(booksThatAreAvailable);
@@ -21,7 +20,7 @@ class BorrowReturnMenu {
         selectAction(section);
     }
 
-    private void selectAction(Biblioteca.section section) {
+    private void selectAction(Biblioteca.Section section) {
         while (borrowReturnMenu.size() != menu.userInput) {
             switch (menu.userInput) {
                 case 1:
@@ -41,13 +40,13 @@ class BorrowReturnMenu {
         menu.callMainMenu();
     }
 
-    private void borrowItem(Biblioteca.section section) {
+    private void borrowItem(Biblioteca.Section section) {
         List<Item> availableItemList = biblioteca.getItemsThatAreAvailable(section);
         if (isListEmpty(availableItemList)) return;
         changeAvailableStatus(availableItemList, "borrow", false);
     }
 
-    private void returnAItem(Biblioteca.section section) {
+    private void returnAItem(Biblioteca.Section section) {
         System.out.println("++++++++++ List of your borrow item ++++++++++ ");
         List<Item> notAvailableItemList = biblioteca.getItemsThatAreNotAvailable(section);
 

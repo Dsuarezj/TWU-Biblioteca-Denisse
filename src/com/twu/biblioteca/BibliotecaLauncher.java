@@ -25,10 +25,8 @@ public class BibliotecaLauncher {
 
     private static void prepareBiblioteca() {
         Biblioteca biblioteca = new Biblioteca();
-        addListBooks();
-        biblioteca.addItemsToASection(addListBooks(), Biblioteca.section.BOOK);
-        addListMovies();
-        biblioteca.addItemsToASection(addListMovies(), Biblioteca.section.MOVIE);
+        biblioteca.addItemsToASection(addListBooks(), Biblioteca.Section.BOOK);
+        biblioteca.addItemsToASection(addListMovies(), Biblioteca.Section.MOVIE);
     }
 
     private static List<Item> addListBooks() {

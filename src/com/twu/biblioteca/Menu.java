@@ -36,10 +36,10 @@ class Menu {
 
             switch (userInput) {
                 case 1:
-                    borrowReturnMenu.displayItemList(Biblioteca.section.BOOK);
+                    borrowReturnMenu.displayItemList(Biblioteca.Section.BOOK);
                     return;
                 case 2:
-                    borrowReturnMenu.displayItemList(Biblioteca.section.MOVIE);
+                    borrowReturnMenu.displayItemList(Biblioteca.Section.MOVIE);
                     return;
                 default:
                     System.out.printf("You chose wrong, try again. Select the option number \n");
