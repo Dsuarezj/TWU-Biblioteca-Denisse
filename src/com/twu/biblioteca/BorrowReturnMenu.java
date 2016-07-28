@@ -5,7 +5,7 @@ import java.util.List;
 
 class BorrowReturnMenu {
 
-    Biblioteca biblioteca = new Biblioteca();
+    private Biblioteca biblioteca = new Biblioteca();
     private Menu menu = new Menu();
     private Item item;
 
