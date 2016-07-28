@@ -42,7 +42,9 @@ class BorrowReturnMenu {
 
     private void borrowItem(Biblioteca.Section section) {
         List<Item> availableItemList = biblioteca.getItemsThatAreAvailable(section);
-        if (isListEmpty(availableItemList)) return;
+        if (isListEmpty(availableItemList)) {
+            return;
+        }
         changeAvailableStatus(availableItemList, "borrow", false);
     }
 
@@ -50,7 +52,9 @@ class BorrowReturnMenu {
         System.out.println("++++++++++ List of your borrow item ++++++++++ ");
         List<Item> notAvailableItemList = biblioteca.getItemsThatAreNotAvailable(section);
 
-        if (isListEmpty(notAvailableItemList)) return;
+        if (isListEmpty(notAvailableItemList)){
+            return;
+        }
 
         biblioteca.displayItemList(notAvailableItemList);
         changeAvailableStatus(notAvailableItemList, "return", true);

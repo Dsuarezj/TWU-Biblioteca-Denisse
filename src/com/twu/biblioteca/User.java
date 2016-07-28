@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 public class User {
 
@@ -11,8 +11,6 @@ public class User {
     private String email;
     private String address;
     private String phoneNumber;
-
-    private List<String> masterUser = new ArrayList<>();
 
     public User(String id, String password, String name, String email, String address, String phoneNumber) {
         this.id = id;
@@ -38,26 +36,26 @@ public class User {
 
         User user = (User) o;
 
-        if (id != null ? !id.equals(user.id) : user.id != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (address != null ? !address.equals(user.address) : user.address != null) return false;
-        if (phoneNumber != null ? !phoneNumber.equals(user.phoneNumber) : user.phoneNumber != null) return false;
-        return masterUser != null ? masterUser.equals(user.masterUser) : user.masterUser == null;
-
+        return new EqualsBuilder()
+                .append(id, user.id)
+                .append(password, user.password)
+                .append(name, user.name)
+                .append(email,user.email)
+                .append(address,user.address)
+                .append(phoneNumber,user.phoneNumber)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
-        result = 31 * result + (masterUser != null ? masterUser.hashCode() : 0);
-        return result;
+        return new HashCodeBuilder()
+                .append(id)
+                .append(password)
+                .append(name)
+                .append(email)
+                .append(address)
+                .append(phoneNumber)
+                .toHashCode();
     }
 
     @Override
