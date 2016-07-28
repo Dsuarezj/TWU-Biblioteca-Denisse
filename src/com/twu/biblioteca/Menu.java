@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 class Menu {
 
+    public int userInput;
     private List<String> mainMenu = Arrays.asList("List of Books", "List of Movies", "Quit");
-    private int userInput;
 
     public void displayWelcome() {
         String bibliotecaName = "Bangalore Public Library";

@@ -33,7 +33,7 @@ class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Item item = (Item) o;
+        final Item item = (Item) o;
 
         if (publishYear != item.publishYear) return false;
         if (stateAvailable != item.stateAvailable) return false;
@@ -44,11 +44,12 @@ class Item {
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (author != null ? author.hashCode() : 0);
-        result = 31 * result + publishYear;
-        result = 31 * result + (stateAvailable ? 1 : 0);
-        return result;
+        return new HashCodeBuilder()
+                .append(name)
+                .append(author)
+                .append(publishYear)
+                .append(stateAvailable)
+                .toHashCode();
     }
 
     @Override
