@@ -25,10 +25,10 @@ public class BibliotecaTest {
 
     private List<Item> allBooks = Arrays.asList(book, availableItem, unavailableItem);
 
+    ByteArrayOutputStream byteArrayOutputStream;
 
     @Before
     public void setUp() {
-        ByteArrayOutputStream byteArrayOutputStream;
         byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
     }
@@ -86,4 +86,21 @@ public class BibliotecaTest {
         assertEquals(testMovieList, biblioteca.getTotalItems(Biblioteca.Section.MOVIE));
     }
 
+    @Test
+    public void testDisplayAListOfItems() {
+        biblioteca.displayItemList(allBooks);
+
+        String expectedMainMenu = "1. Item Name: 1Q84\n" +
+                " Author: Haruki Murakami\n" +
+                " Year : 2009\n" +
+                "2. Item Name: Available Item\n" +
+                " Author: Some author\n" +
+                " Year : 1990\n" +
+                "3. Item Name: Un Available Item\n" +
+                " Author: Another Author\n" +
+                " Year : 2000\n";
+
+        assertEquals(expectedMainMenu, byteArrayOutputStream.toString());
+
+    }
 }

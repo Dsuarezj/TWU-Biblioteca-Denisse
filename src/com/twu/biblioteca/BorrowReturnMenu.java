@@ -59,7 +59,7 @@ class BorrowReturnMenu {
 
     private void changeAvailableStatus(List<Item> itemList, String action, boolean availableStatus) {
         System.out.println("Ingress the item ID that you want to " + action);
-        int userBookSelection = menu.getInput() - 1;
+        int userBookSelection = menu.userInput - 1;
 
         if (userBookSelection < 0 || userBookSelection >= itemList.size()) {
             System.out.println("We can't process that!");

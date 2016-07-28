@@ -20,11 +20,11 @@ class Biblioteca {
     }
 
     public void displayItemList(List<Item> listOfItems) {
-        System.out.println();
-        int numberOfBooks = listOfItems.size();
-        for (int i = 0; i < numberOfBooks; i++) {
-            System.out.println((i + 1) + ". " + listOfItems.get(i));
+        for (Item item : listOfItems) {
+            int itemIndex = listOfItems.indexOf(item) + 1;
+            System.out.print(itemIndex + ". " + item );
         }
+
     }
 
     public List<Item> getTotalItems(Section section) {
