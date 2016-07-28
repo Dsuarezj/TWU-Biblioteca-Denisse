@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -24,14 +23,6 @@ public class BibliotecaTest {
     private Item unavailableItem = new Item("Un Available Item", "Another Author", 2000, false);
 
     private List<Item> allBooks = Arrays.asList(book, availableItem, unavailableItem);
-
-    ByteArrayOutputStream byteArrayOutputStream;
-
-    @Before
-    public void setUp() {
-        byteArrayOutputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(byteArrayOutputStream));
-    }
 
     @After
     public void cleanUp() {
@@ -88,6 +79,10 @@ public class BibliotecaTest {
 
     @Test
     public void testDisplayAListOfItems() {
+        ByteArrayOutputStream byteArrayOutputStream =  new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+
+
         biblioteca.displayItemList(allBooks);
 
         String expectedMainMenu = "1. Item Name: 1Q84\n" +

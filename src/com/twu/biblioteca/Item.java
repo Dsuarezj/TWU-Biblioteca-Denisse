@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 class Item {
 
     private String name;
@@ -25,7 +27,6 @@ class Item {
     public void setItemStateAvailable(boolean state) {
         stateAvailable = state;
     }
-
 
     @Override
     public boolean equals(Object o) {
