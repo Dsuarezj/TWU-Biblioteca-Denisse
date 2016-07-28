@@ -63,8 +63,9 @@ class Menu {
     }
 
     private void displayAListOfItems(List<String> items) {
-        for (int i = 0; i < items.size(); i++) {
-            System.out.print((i + 1) + ". " + items.get(i) + "\t");
+        for (String item : items) {
+            int itemIndex = items.indexOf(item) + 1;
+            System.out.print(itemIndex + ". " + item + "\t");
         }
         System.out.println();
         System.out.println("Select the option number");
