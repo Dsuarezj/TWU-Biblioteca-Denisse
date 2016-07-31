@@ -11,7 +11,6 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-
 public class BibliotecaTest {
 
     private Biblioteca biblioteca = new Biblioteca();

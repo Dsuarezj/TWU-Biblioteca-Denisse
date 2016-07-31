@@ -6,13 +6,13 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 public class User {
 
     private String id;
-    private String password;
+    private Password password;
     private String name;
     private String email;
     private String address;
     private String phoneNumber;
 
-    public User(String id, String password, String name, String email, String address, String phoneNumber) {
+    public User(String id, Password password, String name, String email, String address, String phoneNumber) {
         this.id = id;
         this.password = password;
         this.name = name;
@@ -25,37 +25,18 @@ public class User {
         return id;
     }
 
-    public String getPassword() {
+    public Password getPassword() {
         return password;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        return new EqualsBuilder()
-                .append(id, user.id)
-                .append(password, user.password)
-                .append(name, user.name)
-                .append(email,user.email)
-                .append(address,user.address)
-                .append(phoneNumber,user.phoneNumber)
-                .isEquals();
+        return EqualsBuilder.reflectionEquals(this, o);
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder()
-                .append(id)
-                .append(password)
-                .append(name)
-                .append(email)
-                .append(address)
-                .append(phoneNumber)
-                .toHashCode();
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 
     @Override

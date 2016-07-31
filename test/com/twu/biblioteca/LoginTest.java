@@ -12,8 +12,11 @@ public class LoginTest {
     private Login login = new Login();
 
 
-    private User masterUserTest = new User("000-0000", "master key", "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
-    private User firstUser = new User("000-0001", "first key", "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
+    private User masterUserTest = new User("000-0000", new Password("master key"), "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
+    private User firstUser = new User("000-0001", new Password("first key"), "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
+
+    public LoginTest() throws Password.CannotPerformOperationException {
+    }
 
     @Before
     public void setUp() {
@@ -55,7 +58,7 @@ public class LoginTest {
     }
 
     @Test
-    public void testShouldReturnTrueIfMasterUserLoginUsingMasterPass() {
+    public void testShouldReturnTrueIfMasterUserLoginUsingMasterPass() throws Password.CannotPerformOperationException, Password.InvalidHashException {
         login.isRegistered(masterUserTest.getId());
 
         boolean isPasswordCorrect = login.isPasswordCorrect("master key");
@@ -65,7 +68,7 @@ public class LoginTest {
 
 
     @Test
-    public void testShouldReturnFalseIfMasterUserLoginUsingWrongPass() {
+    public void testShouldReturnFalseIfMasterUserLoginUsingWrongPass() throws Password.CannotPerformOperationException, Password.InvalidHashException {
         login.isRegistered(masterUserTest.getId());
 
         boolean isPasswordCorrect = login.isPasswordCorrect("wrong pass");

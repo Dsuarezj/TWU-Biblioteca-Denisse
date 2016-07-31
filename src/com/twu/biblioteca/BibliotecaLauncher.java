@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BibliotecaLauncher {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Password.CannotPerformOperationException, Password.InvalidHashException {
 
         Menu menu = new Menu();
         Login login = new Login();
