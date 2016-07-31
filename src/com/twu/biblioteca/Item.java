@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 class Item {
@@ -30,26 +31,13 @@ class Item {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        final Item item = (Item) o;
-
-        if (publishYear != item.publishYear) return false;
-        if (stateAvailable != item.stateAvailable) return false;
-        if (name != null ? !name.equals(item.name) : item.name != null) return false;
-        return author != null ? author.equals(item.author) : item.author == null;
+        return EqualsBuilder.reflectionEquals(this, o);
 
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder()
-                .append(name)
-                .append(author)
-                .append(publishYear)
-                .append(stateAvailable)
-                .toHashCode();
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 
     @Override
