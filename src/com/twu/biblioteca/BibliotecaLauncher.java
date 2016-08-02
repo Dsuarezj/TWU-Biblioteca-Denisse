@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.biblioteca.Biblioteca;
 import com.twu.biblioteca.items.Book;
 import com.twu.biblioteca.items.Item;
+import com.twu.biblioteca.items.Movie;
 import com.twu.biblioteca.menu.Menu;
 import com.twu.biblioteca.user.Login;
 import com.twu.biblioteca.user.Password;
@@ -44,8 +45,8 @@ public class BibliotecaLauncher {
     }
 
     private static List<Item> addListMovies() {
-        Item movie1 = new Item("Adventure time season 1", "Pendleton Ward", 2010, true);
-        Item movie2 = new Item("V for Vendetta", "James McTeigue", 2006, true);
+        Item movie1 = new Movie("Adventure time season 1", "Pendleton Ward", 2010, true);
+        Item movie2 = new Movie("V for Vendetta", "James McTeigue", 2006, true);
         List<Item> totalListOfBibliotecaMovies = Arrays.asList(movie1, movie2);
         return totalListOfBibliotecaMovies;
     }

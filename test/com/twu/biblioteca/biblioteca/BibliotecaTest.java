@@ -1,6 +1,8 @@
 package com.twu.biblioteca.biblioteca;
 
+import com.twu.biblioteca.items.Book;
 import com.twu.biblioteca.items.Item;
+import com.twu.biblioteca.items.Movie;
 import org.junit.After;
 import org.junit.Test;
 
@@ -16,8 +18,8 @@ public class BibliotecaTest {
 
     private Biblioteca biblioteca = new Biblioteca();
 
-    private Item book = new Item("1Q84", "Haruki Murakami", 2009, true);
-    private Item movie = new Item("Adventure time season 1", "Pendleton Ward", 2010, true);
+    private Item book = new Book("1Q84", "Haruki Murakami", 2009, true);
+    private Item movie = new Movie("Adventure time season 1", "Pendleton Ward", 2010, true);
 
     private Item availableItem = new Item("Available Item", "Some author", 1990, true);
     private Item unavailableItem = new Item("Un Available Item", "Another Author", 2000, false);
