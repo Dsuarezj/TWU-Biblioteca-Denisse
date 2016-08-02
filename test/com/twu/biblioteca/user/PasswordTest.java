@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.user;
 
+import com.twu.biblioteca.user.Password;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;

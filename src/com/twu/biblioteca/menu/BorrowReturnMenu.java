@@ -1,4 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.menu;
+
+import com.twu.biblioteca.biblioteca.Biblioteca;
+import com.twu.biblioteca.items.Item;
 
 import java.util.Arrays;
 import java.util.List;
@@ -63,6 +66,7 @@ class BorrowReturnMenu {
 
     private void changeAvailableStatus(List<Item> itemList, String action, boolean availableStatus) {
         System.out.println("Ingress the item ID that you want to " + action);
+        menu.getInput();
         int userBookSelection = menu.userInput - 1;
 
         if (userBookSelection < 0 || userBookSelection >= itemList.size()) {

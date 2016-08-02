@@ -1,10 +1,10 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.user;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-class Login {
+public class Login {
 
     private User masterUser = new User("000-0000", new Password("master key"), "Maestro", "master@biblioteca.com", "Bangalore", "123-123-123");
     private User firstUser = new User("000-0001", new Password("first key"), "First User", "first@biblioteca.com", "Bangalore", "123-123-123");
@@ -15,7 +15,7 @@ class Login {
     private String loginInput;
     private boolean access;
 
-    Login() throws Password.CannotPerformOperationException {
+    public Login() throws Password.CannotPerformOperationException {
     }
 
 

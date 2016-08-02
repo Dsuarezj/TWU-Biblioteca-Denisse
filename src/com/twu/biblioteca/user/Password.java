@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.user;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -32,7 +32,7 @@ public class Password {
             super(message, source);
         }
     }
-    
+
     private final String hash;
 
     public Password(String password) throws CannotPerformOperationException {
@@ -60,16 +60,14 @@ public class Password {
 
     public static String createHash(char[] password)
             throws CannotPerformOperationException {
-        // Generate a random salt
+
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[SALT_BYTE_SIZE];
         random.nextBytes(salt);
 
-        // Hash the password
         byte[] hash = pbkdf2(password, salt, PBKDF2_ITERATIONS, HASH_BYTE_SIZE);
         int hashSize = hash.length;
 
-        // format: algorithm:iterations:hashSize:salt:hash
         String parts = "sha1:" +
                 PBKDF2_ITERATIONS +
                 ":" + hashSize +
@@ -87,7 +85,7 @@ public class Password {
 
     public static boolean verifyPassword(char[] password, String correctHash)
             throws CannotPerformOperationException, InvalidHashException {
-        // Decode the hash into its parameters
+
         String[] params = correctHash.split(":");
         if (params.length != HASH_SECTIONS) {
             throw new InvalidHashException(
@@ -95,14 +93,13 @@ public class Password {
             );
         }
 
-        // Currently, Java only supports SHA1.
         if (!params[HASH_ALGORITHM_INDEX].equals("sha1")) {
             throw new CannotPerformOperationException(
                     "Unsupported hash type."
             );
         }
 
-        int iterations = 0;
+        int iterations;
         try {
             iterations = Integer.parseInt(params[ITERATION_INDEX]);
         } catch (NumberFormatException ex) {
@@ -119,7 +116,7 @@ public class Password {
         }
 
 
-        byte[] salt = null;
+        byte[] salt;
         try {
             salt = fromBase64(params[SALT_INDEX]);
         } catch (IllegalArgumentException ex) {
@@ -129,7 +126,7 @@ public class Password {
             );
         }
 
-        byte[] hash = null;
+        byte[] hash;
         try {
             hash = fromBase64(params[PBKDF2_INDEX]);
         } catch (IllegalArgumentException ex) {
@@ -140,7 +137,7 @@ public class Password {
         }
 
 
-        int storedHashSize = 0;
+        int storedHashSize;
 
         try {
             storedHashSize = Integer.parseInt(params[HASH_SIZE_INDEX]);
@@ -157,18 +154,16 @@ public class Password {
             );
         }
 
-        // Compute the hash of the provided password, using the same salt,
-        // iteration count, and hash length
         byte[] testHash = pbkdf2(password, salt, iterations, hash.length);
-        // Compare the hashes in constant time. The password is correct if
-        // both hashes match.
+
         return slowEquals(hash, testHash);
     }
 
     private static boolean slowEquals(byte[] a, byte[] b) {
         int diff = a.length ^ b.length;
-        for (int i = 0; i < a.length && i < b.length; i++)
+        for (int i = 0; i < a.length && i < b.length; i++) {
             diff |= a[i] ^ b[i];
+        }
         return diff == 0;
     }
 
@@ -205,44 +200,3 @@ public class Password {
     }
 
 }
-
-
-//    final byte[] hash;
-//    final byte[] salt;
-//
-//    public Password(String password) {
-//        this.salt = SecureRandom.getSeed(32);
-//        this.hash = hash(password.toCharArray(), salt);
-//    }
-
-
-//    public boolean matches(String password, byte[] salt) {
-//        byte[] inputPassword = hash(password.toCharArray(), this.salt);
-//        System.out.println("salt " + salt);
-//        System.out.println("input " + inputPassword);
-//        return inputPassword.equals(hash);
-//    }
-
-
-//    private byte[] hash(char[] userInputPassword, byte[] salt) {
-//        final int iteration = 1000;
-//        final int keyLength = 256;
-//        final String algorithm = "PBKDF2WithHmacSHA1";
-//
-//        try {
-//            SecretKeyFactory skf = SecretKeyFactory.getInstance(algorithm);
-//            PBEKeySpec spec = new PBEKeySpec(userInputPassword, salt, iteration, keyLength);
-//            SecretKey key = skf.generateSecret(spec);
-//            byte[] res = key.getEncoded();
-//            return res;
-//
-//        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
-
-//    public byte[] getSalt() {
-//        return salt;
-//    }
-//}
