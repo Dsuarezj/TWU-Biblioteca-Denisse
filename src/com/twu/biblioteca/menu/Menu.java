@@ -1,10 +1,12 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.menu;
+
+import com.twu.biblioteca.biblioteca.Biblioteca;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-class Menu {
+public class Menu {
 
     public int userInput;
     private List<String> mainMenu = Arrays.asList("List of Books", "List of Movies", "Quit");

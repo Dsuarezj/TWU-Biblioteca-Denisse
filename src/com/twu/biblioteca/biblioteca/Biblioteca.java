@@ -1,14 +1,16 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.biblioteca;
+
+import com.twu.biblioteca.items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class Biblioteca {
+public class Biblioteca {
 
     private static List<Item> totalBooks = new ArrayList<>();
     private static List<Item> totalMovies = new ArrayList<>();
 
-    protected enum Section {
+    public enum Section {
             BOOK, MOVIE
     }
 

@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.user;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;

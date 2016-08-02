@@ -1,14 +1,19 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.items;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-class Item {
+public class Item {
 
     private String name;
     private String author;
     private int publishYear;
     private boolean stateAvailable;
+    Type type;
+
+    protected enum Type {
+        BOOK, MOVIE
+    }
 
     public Item(String name, String author, int publishYear, boolean stateAvailable) {
         this.name = name;

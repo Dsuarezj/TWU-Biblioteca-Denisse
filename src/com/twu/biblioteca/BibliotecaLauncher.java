@@ -1,5 +1,12 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.biblioteca.Biblioteca;
+import com.twu.biblioteca.items.Book;
+import com.twu.biblioteca.items.Item;
+import com.twu.biblioteca.menu.Menu;
+import com.twu.biblioteca.user.Login;
+import com.twu.biblioteca.user.Password;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,8 +37,8 @@ public class BibliotecaLauncher {
     }
 
     private static List<Item> addListBooks() {
-        Item item1 = new Item("Clockwork orange", "Anthony Burgess", 1962, true);
-        Item item2 = new Item("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, true);
+        Item item1 = new Book("Clockwork orange", "Anthony Burgess", 1962, true);
+        Item item2 = new Book("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, true);
         List<Item> totalListOfBibliotecaBooks = Arrays.asList(item1, item2);
         return totalListOfBibliotecaBooks;
     }
