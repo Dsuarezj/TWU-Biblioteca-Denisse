@@ -35,9 +35,9 @@ public class User {
     }
 
     @Override
-    public int hashCode() {
-        return HashCodeBuilder.reflectionHashCode(this);
-    }
+        public int hashCode() {
+            return HashCodeBuilder.reflectionHashCode(this);
+        }
 
     @Override
     public String toString() {
